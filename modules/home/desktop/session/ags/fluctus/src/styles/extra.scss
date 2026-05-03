@@ -1,0 +1,31 @@
+@use "_theme" as *;
+
+* {
+  font-family: $font-sans-serif;
+  font-size: $font-size;
+}
+
+window {
+  background-color: transparent;
+}
+
+tooltip {
+  * {
+    all: unset;
+  }
+
+  background: $bg-base;
+  border: none;
+}
+
+popover {
+  background-color: transparent;
+}
+
+popover > contents {
+  background-color: $bg-base;
+}
+
+popover > arrow {
+  background-color: transparent;
+}

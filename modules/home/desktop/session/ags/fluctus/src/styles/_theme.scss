@@ -1,0 +1,49 @@
+@use "sass:color";
+
+/* Fonts */
+$font-sans-serif: "Google Sans Flex", "Noto Sans CJK", "Noto Sans CJK KR";
+$font-mono: "ZedMono Nerd Font";
+$font-size: 11pt;
+
+/* Main Colors */
+$bg-base: rgb(20, 20, 20);
+$pane-base: rgb(160, 160, 160);
+$fg-base: rgb(240, 240, 240);
+$border-base: rgb(50, 50, 50);
+
+$bg: rgba($bg-base, 0.85);
+$bg2: color.adjust($bg, $lightness: 30%);
+$fg: $fg-base;
+$fg1: rgba($fg-base, 0.9);
+$fg2: rgba($fg-base, 0.7);
+$fg3: rgba($fg-base, 0.4);
+$pane-bg: rgba($pane-base, 0.1);
+
+$widget-bg: rgba($fg, 0.03);
+$hover-bg: rgba($fg, 0.06);
+$active-bg: rgba($fg, 0.08);
+$hover-fg: color.adjust($fg, $lightness: 8%);
+$shadow-color: rgba(0, 0, 0, 0.2);
+
+/* Border */
+$border-color: rgba($border-base, 0.6);
+$inner-border-color: rgba($border-base, 0.5);
+$border-width: 1px;
+$border-radius: 10pt;
+$inner-border-radius: calc($border-radius / 2);
+$border: $border-width solid $border-color;
+$box-shadow:
+  0 1pt 3pt rgba(0, 0, 0, 0.35),
+  0 3pt 6pt rgba(0, 0, 0, 0.22);
+$box-shadow2: 0 1pt 3pt rgba(0, 0, 0, 0.25);
+
+$bar-margin: 5pt;
+$bar-padding: 6pt;
+$bar-button-padding: 4pt;
+$bar-button-margin: 4pt;
+
+$workspace-indicator-unused: rgba($fg, 0.2);
+$workspace-indicator-used: rgba($fg, 0.5);
+$workspace-indicator-focused: rgba($fg, 0.8);
+
+$transition: 200ms;

@@ -1,0 +1,209 @@
+@use "_theme" as *;
+@use "mixins/window";
+@use "mixins/button";
+@use "mixins/unset";
+
+window#quicksettings {
+  .page {
+    @include window.window;
+    padding: 10pt;
+  }
+
+  .main-page {
+    .media {
+      @include window.pane;
+      background-color: $pane-bg;
+      box-shadow: $box-shadow2;
+      min-height: 11rem;
+      > * {
+        border-radius: $inner-border-radius;
+      }
+      .player {
+        border-radius: $inner-border-radius;
+        transition: background-image 0.5s ease-in-out;
+        label {
+          &.title {
+            padding-left: 20pt;
+            font-size: $font-size + 4pt;
+          }
+          &.artist {
+            padding-left: 20pt;
+            color: $fg2;
+            font-size: $font-size + 1pt;
+          }
+          &.time {
+            padding-right: 20pt;
+            color: $fg2;
+            font-size: $font-size + 1pt;
+          }
+        }
+        button {
+          @include unset.unset;
+          margin: 5px 0;
+          padding: 0 20px;
+          image {
+            -gtk-icon-size: 12pt;
+          }
+
+          transition: color 200ms ease;
+          &:hover {
+            color: $fg2;
+          }
+        }
+      }
+    }
+
+    .header {
+      padding-bottom: 10pt;
+      .uptime {
+        .title,
+        image {
+          color: $fg2;
+        }
+        .amount {
+          font-size: $font-size + 2pt;
+        }
+      }
+
+      button {
+        @include button.button(true);
+        border-radius: $inner-border-radius;
+        margin-left: 10pt;
+      }
+
+      image {
+        -gtk-icon-size: 14pt;
+        padding: 6pt;
+      }
+    }
+
+    .body {
+      image {
+        transition: background-color 200ms ease;
+        min-width: 30pt;
+        min-height: 30pt;
+        -gtk-icon-size: 14pt;
+      }
+
+      > * {
+        margin-bottom: 10pt;
+        &:last-child {
+          margin-bottom: 0pt;
+        }
+      }
+      .row {
+        > * {
+          margin-right: 10pt;
+          &:last-child {
+            margin-right: 0pt;
+          }
+        }
+      }
+
+      revealer {
+        @include unset.unset;
+        .list {
+          @include window.pane;
+          margin-bottom: 10pt;
+        }
+      }
+    }
+  }
+
+  .qs-sliders {
+    @include window.pane;
+    padding: 4pt 8pt;
+
+    button {
+      @include unset.unset;
+      image {
+        -gtk-icon-size: 14pt;
+        margin: 4pt;
+      }
+
+      transition: color 200ms ease;
+      &:hover {
+        color: $fg2;
+      }
+    }
+
+    slider {
+      padding: 1pt;
+      background-color: transparent;
+      box-shadow: none;
+    }
+
+    highlight {
+      background-color: $fg1;
+    }
+  }
+
+  .qs-button {
+    @include unset.unset(true);
+    min-height: 4rem;
+    min-width: 16rem;
+    background-color: $pane-bg;
+    border-radius: $inner-border-radius;
+    box-shadow: $box-shadow2;
+
+    .main {
+      border: $border-width solid $border-color;
+      border-radius: $inner-border-radius;
+      &.with-arrow {
+        border-top-right-radius: 0pt;
+        border-bottom-right-radius: 0pt;
+      }
+
+      image {
+        padding: 0pt 4pt;
+        transition: color 200ms ease;
+      }
+
+      &:hover {
+        image {
+          color: $fg2;
+        }
+      }
+
+      .qs-label {
+        font-size: $font-size + 1pt;
+      }
+
+      .qs-subtitle {
+        color: $fg2;
+      }
+    }
+
+    .arrow {
+      border: $border-width solid $border-color;
+      border-radius: 0pt $inner-border-radius $inner-border-radius 0pt;
+      border-left-color: transparent;
+      image {
+        margin: 4pt;
+      }
+
+      &:hover {
+        image {
+          color: $fg2;
+        }
+      }
+    }
+
+    &.active {
+      color: $bg;
+      background-color: $fg1;
+      .qs-subtitle {
+        color: $bg2;
+      }
+
+      .main,
+      .arrow {
+        &:hover {
+          image {
+            color: $bg2;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+@use "_theme" as *;
+@use "mixins/button";
+@use "mixins/window";
+@use "mixins/unset";
+
+@use "sass:color";
+
+window#powermenu {
+  .main {
+    @include window.window;
+    padding: 5pt;
+
+    .powermenu-button {
+      @include button.pane-button;
+      border-radius: $inner-border-radius;
+      margin: 5pt;
+      min-width: 10em;
+      min-height: 10em;
+      image {
+        color: $fg1;
+        padding: 5pt;
+        -gtk-icon-size: 24pt;
+        transition: color $transition;
+      }
+
+      .title {
+        margin-left: 5px;
+        font-size: 16px;
+        transition: color $transition;
+      }
+
+      .hotkey {
+        font-size: $font-size + 2pt;
+        color: $fg3;
+        padding: 10pt;
+      }
+    }
+  }
+}
+
+window#verification {
+  .main {
+    @include window.window;
+    box-shadow: $box-shadow;
+    padding: 10pt;
+
+    .text {
+      .title {
+        font-size: $font-size + 4pt;
+      }
+
+      .description {
+        color: $fg2;
+      }
+    }
+
+    .buttons {
+      button {
+        @include button.pane-button;
+        min-width: 10em;
+        margin-top: 10pt;
+        padding: 8pt;
+        border-radius: $inner-border-radius;
+        font-size: $font-size;
+        label {
+          transition: color $transition ease;
+        }
+        &:last-child {
+          margin-left: 10pt;
+        }
+      }
+    }
+  }
+}

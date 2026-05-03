@@ -1,0 +1,105 @@
+@use "../_theme" as *;
+@use "unset";
+@use "window";
+@use "sass:color";
+
+@mixin button-focus() {
+  background-color: $active-bg;
+  color: $hover-fg;
+}
+
+@mixin button-hover() {
+  background-color: $hover-bg;
+  color: $hover-fg;
+}
+
+@mixin button-active() {
+  background-color: $active-bg;
+  color: $hover-fg;
+}
+
+@mixin button-disabled() {
+  box-shadow: none;
+  background-color: transparent;
+  color: color.adjust($fg, $alpha: -0.7);
+}
+
+@mixin button($flat: false) {
+  all: unset;
+  transition: $transition;
+  color: $fg;
+
+  @if $flat {
+    background-color: transparent;
+    background-image: none;
+    box-shadow: none;
+  } @else {
+    background-color: $widget-bg;
+    border: $border-width solid $inner-border-color;
+  }
+
+  &:focus {
+    @include button-focus;
+  }
+
+  &:hover {
+    @include button-hover;
+  }
+
+  &:active,
+  &.on,
+  &.active,
+  &:checked {
+    @include button-active;
+  }
+
+  &:disabled {
+    @include button-disabled;
+  }
+}
+
+@mixin bar-button($flat: true) {
+  @include unset.unset;
+  color: $fg;
+
+  > * {
+    transition: $transition;
+
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &:hover > * {
+    @include button-hover;
+  }
+
+  &:active,
+  &.active,
+  &.on,
+  &:checked {
+    > * {
+      @include button-active;
+    }
+  }
+}
+
+@mixin pane-button {
+  @include window.pane;
+
+  &:hover {
+    color: $fg2;
+
+    * {
+      color: $fg2;
+    }
+  }
+
+  &:active,
+  &.active {
+    color: $hover-fg;
+
+    * {
+      color: $hover-fg;
+    }
+  }
+}

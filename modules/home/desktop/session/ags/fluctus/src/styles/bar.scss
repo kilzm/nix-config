@@ -1,0 +1,93 @@
+@use "_theme" as *;
+@use "mixins/button";
+@use "mixins/unset";
+@use "mixins/window";
+
+@use "sass:color";
+
+window#bar {
+  .main {
+    @include window.window();
+    margin: $bar-margin;
+    min-height: 30pt;
+
+    separator {
+      min-width: 1px;
+      margin: 4pt;
+      background-color: $border-color;
+    }
+
+    image {
+      -gtk-icon-size: 12pt;
+    }
+
+    button {
+      @include button.bar-button;
+      > * {
+        border-radius: $border-radius - $bar-button-padding;
+        margin: $bar-button-margin 2pt;
+        padding: $bar-button-padding;
+      }
+    }
+
+    .launcher {
+      padding-left: $bar-button-padding;
+      image {
+        padding-right: $bar-padding;
+      }
+    }
+
+    .workspaces {
+      label {
+        font-size: 0;
+        margin: 4pt 3pt;
+        min-width: 7pt;
+        border-radius: 100pt;
+        background-color: $workspace-indicator-unused;
+        transition: calc($transition / 2);
+
+        &.used {
+          background-color: $workspace-indicator-used;
+        }
+
+        &.focused {
+          background-color: $workspace-indicator-focused;
+          min-width: 26pt;
+        }
+      }
+    }
+
+    .media {
+      image {
+        color: $fg;
+      }
+      label {
+        line-height: 12pt;
+        padding-right: 2 * $bar-button-padding;
+      }
+    }
+
+    .powermenu {
+      padding-right: $bar-button-padding;
+    }
+
+    .tray {
+      button > * {
+        padding: $bar-button-padding 2pt;
+      }
+    }
+
+    .indicators {
+      image {
+        padding: 1pt;
+        -gtk-icon-size: 9pt;
+      }
+    }
+
+    .battery {
+      label {
+        margin-left: $bar-padding;
+      }
+    }
+  }
+}

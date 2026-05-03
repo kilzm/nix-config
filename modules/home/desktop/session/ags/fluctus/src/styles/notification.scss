@@ -1,0 +1,64 @@
+@use "_theme" as *;
+@use "mixins/button";
+@use "mixins/window";
+
+window#notification-popups {
+  .notification {
+    @include window.window;
+    padding: 8pt;
+    margin-top: 6pt;
+    margin-right: 6pt;
+
+    separator {
+      background: $border-color;
+      margin: 6pt 0pt;
+    }
+
+    .header {
+      .app-icon {
+        margin-right: 6pt;
+      }
+      .app-name {
+        color: $fg2;
+      }
+
+      .timestamp {
+        color: $fg2;
+      }
+
+      button {
+        @include button.button(true);
+      }
+    }
+
+    .content {
+      .summary {
+        line-height: $font-size + 2pt;
+        font-size: $font-size + 2pt;
+        margin-bottom: 4pt;
+        margin-left: 8pt;
+      }
+
+      .body {
+        line-height: $font-size + 2pt;
+        color: $fg2;
+        margin-left: 8pt;
+      }
+
+      picture {
+        border-radius: $border-radius - 4pt;
+        box-shadow: $box-shadow;
+      }
+    }
+
+    .actions {
+      margin-top: 6pt;
+      button {
+        @include button.button;
+        border-radius: $border-radius - 4pt;
+        margin: 0pt 4pt;
+        padding: 4pt;
+      }
+    }
+  }
+}

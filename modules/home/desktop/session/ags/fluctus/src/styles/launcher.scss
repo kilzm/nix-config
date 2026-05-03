@@ -1,0 +1,100 @@
+@use "_theme" as *;
+@use "mixins/button";
+@use "mixins/unset";
+@use "mixins/window";
+
+@use "sass:math";
+@use "sass:color";
+
+window#launcher {
+  min-height: 62rem;
+
+  .main {
+    @include window.window;
+    margin: 1rem;
+    min-width: 42rem;
+
+    separator {
+      background: $border-color;
+    }
+
+    .entry {
+      all: unset;
+      margin: 15pt 20pt;
+
+      image {
+        -gtk-icon-size: 20pt;
+      }
+
+      text {
+        padding: 0pt 10pt;
+        font-size: 16pt;
+        placeholder {
+          font-size: 16pt;
+        }
+      }
+    }
+
+    .content {
+      margin: 10pt 16pt 16pt 16pt;
+
+      .category {
+        color: $fg2;
+      }
+
+      .item {
+        all: unset;
+        @include button.button(true);
+        padding: 5pt 10pt;
+        margin-top: 5pt;
+        border-radius: calc($border-radius * 0.5);
+        &.list {
+          .title {
+            font-size: 12pt;
+          }
+          image {
+            padding-right: 10pt;
+            -gtk-icon-size: 30pt;
+          }
+          .hotkey {
+            margin-right: 5pt;
+            font-size: 8pt;
+          }
+        }
+
+        &.single {
+          image {
+            color: $fg1;
+            -gtk-icon-size: 30pt;
+            padding-right: 10pt;
+          }
+          .title {
+            font-size: 18pt;
+          }
+        }
+
+        .hotkey {
+          @include window.pane;
+          padding: 5pt;
+          color: $fg1;
+          border-radius: calc($border-radius * 0.3);
+        }
+
+        &.help {
+          .hotkey {
+            font-size: 12pt;
+            margin-right: 10pt;
+            min-width: 1.4rem;
+          }
+        }
+
+        &.shell {
+          .title {
+            font-size: 15pt;
+            font-family: $font-mono;
+          }
+        }
+      }
+    }
+  }
+}
