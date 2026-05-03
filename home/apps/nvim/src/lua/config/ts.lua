@@ -1,18 +1,22 @@
-local Remap = require('config.keymap')
-local nnoremap = Remap.nnoremap
+local ts = require('nvim-treesitter')
 
-require('nvim-treesitter.configs').setup {
-    ensure_installed = { },
+ts.setup({
     auto_install = false,
-    highlight = { enable = true },
-    indent = { enable = true },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = "<C-]>",
-            node_incremental = "C-]>",
-            scope_incremental = false,
-            node_decremental = "<C-[>",
-        },
-    },
-}
+})
+
+local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = group,
+    desc = "Enable TreeSitter highlighting and indentation",
+    callback = function(ev)
+        local ft = ev.match
+
+        local lang = vim.treesitter.language.get_lang(ft) or ft
+        local buf = ev.buf
+        pcall(vim.treesitter.start, buf, lang)
+
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})

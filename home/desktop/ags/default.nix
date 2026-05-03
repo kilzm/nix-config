@@ -2,14 +2,15 @@
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   ags-shell = inputs.ags.lib.bundle {
     inherit pkgs;
     src = ./.;
     name = "ags-shell";
     entry = "app.ts";
     gtk4 = true;
-    extraPackages = with inputs.ags.packages.${pkgs.system}; [
+    extraPackages = with inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}; [
       apps
       battery
       bluetooth
@@ -21,7 +22,8 @@
       wireplumber
     ];
   };
-in {
+in
+{
   imports = [
     inputs.ags.homeManagerModules.default
   ];
@@ -29,7 +31,7 @@ in {
   programs.ags = {
     enable = true;
     configDir = ./.;
-    extraPackages = with inputs.ags.packages.${pkgs.system}; [
+    extraPackages = with inputs.ags.packages.${pkgs.stdenv.hostPlatform.system}; [
       apps
       battery
       bluetooth

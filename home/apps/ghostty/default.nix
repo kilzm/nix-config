@@ -3,11 +3,13 @@
   host,
   pkgs,
   ...
-}: let
+}:
+let
   xterm = pkgs.writeShellScriptBin "xterm" ''
     ${pkgs.ghostty}/bin/ghostty "$@"
   '';
-in {
+in
+{
   imports = [
     ./${host}.nix
   ];
@@ -49,12 +51,12 @@ in {
 
   programs.ghostty = {
     enable = true;
-    settings = rec {
+    settings = {
       font-family = config.theming.fonts.mono;
 
       theme = "nordfox";
       background = "141414";
-      background-opacity = 0.93;
+      background-opacity = 0.85;
 
       command = "zsh";
       shell-integration = "zsh";
@@ -66,6 +68,10 @@ in {
       confirm-close-surface = false;
 
       mouse-scroll-multiplier = 1;
+
+      custom-shader = [
+        "${./shaders/cursor-warp.glsl}"
+      ];
 
       keybind = "ctrl+enter=unbind";
     };

@@ -1,12 +1,14 @@
 {
+  inputs,
   pkgs,
   host,
   ...
-}: {
+}:
+{
   imports = [
     ./${host}.nix
     ./hyprland
-    ./ags
+    # ./ags
     ./gnome
     ./qt
     ./waypaper
@@ -19,19 +21,23 @@
     };
   };
 
+  programs.onlyoffice = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
+    inputs.fluctus.packages.${pkgs.stdenv.hostPlatform.system}.default
+
     libnotify
     musescore
     libappindicator
-    swww
+    awww
     networkmanagerapplet
     playerctl
     brightnessctl
     wl-clipboard
-    libreoffice
     zoom-us
     element-desktop
-    mission-center
     gimp3-with-plugins
   ];
 }

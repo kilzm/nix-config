@@ -1,5 +1,6 @@
-{...}: {
-  imports = [./gaming];
+{ ... }:
+{
+  imports = [ ./gaming ];
 
   theming.ram = "2832ff";
 }

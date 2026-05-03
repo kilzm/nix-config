@@ -12,6 +12,7 @@ local function init()
     require "config.git"
     require "config.color"
     require "config.alpha"
+    require "config.markdown"
     require "config.noice"
     require "config.whichkey"
 end

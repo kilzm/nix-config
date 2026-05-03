@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.ghostty = {
     settings = {
       font-size = 13;

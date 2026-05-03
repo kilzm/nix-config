@@ -2,12 +2,13 @@
   pkgs,
   self,
   ...
-}: {
+}:
+{
   environment.systemPackages = with pkgs; [
     (
       let
-        python-packages = p:
-          with p; [
+        python-packages =
+          p: with p; [
             pandas
             requests
             numpy
@@ -23,7 +24,7 @@
             pillow
           ];
       in
-        python3.withPackages python-packages
+      python3.withPackages python-packages
     )
 
     ghostty
@@ -56,6 +57,15 @@
     nh = {
       enable = true;
       flake = "/home/kilianm/nixos-config";
+    };
+    ausweisapp = {
+      enable = true;
+      openFirewall = true;
+    };
+
+    appimage = {
+      enable = true;
+      binfmt = true;
     };
   };
 }

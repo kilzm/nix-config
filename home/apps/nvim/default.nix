@@ -2,14 +2,16 @@
   pkgs,
   inputs,
   ...
-}: let
-  allPlugins = pkgs.vimPlugins // (import ./plugins {inherit pkgs inputs;});
+}:
+let
   config-plugin = pkgs.vimUtils.buildVimPlugin {
-    name = "nvim-config";
+    pname = "nvim-config";
+    version = "";
     doCheck = false;
     src = ./src;
   };
-in {
+in
+{
   home.packages = with pkgs; [
     neovim-remote
   ];
@@ -20,30 +22,28 @@ in {
     vimdiffAlias = true;
     defaultEditor = true;
 
-    extraPackages = with pkgs; [
-      # clipboard
-      xclip
-      wl-clipboard
-
-      # lsp
-      nodePackages.bash-language-server
-      nil
-      nixd
-      lua-language-server
-      texlab
-      nodePackages.diagnostic-languageserver
-      ols
-      marksman
-      jdt-language-server
-      glsl_analyzer
-      nodePackages.typescript-language-server
-      basedpyright
-    ] ++ (with inputs.stable.legacyPackages.${pkgs.system}; [
-      clang-tools
-    ]);
+    extraPackages =
+      with pkgs;
+      [
+        bash-language-server
+        nil
+        nixd
+        lua-language-server
+        texlab
+        diagnostic-languageserver
+        # ols
+        marksman
+        jdt-language-server
+        glsl_analyzer
+        typescript-language-server
+        basedpyright
+        clang-tools
+      ]
+      ++ (with inputs.stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+      ]);
 
     plugins =
-      (with allPlugins; [
+      (with pkgs.vimPlugins; [
         # theme
         nightfox-nvim
         gruvbox-material-nvim
@@ -55,18 +55,9 @@ in {
         dropbar-nvim
         nui-nvim
         noice-nvim
+        render-markdown-nvim
 
-        # mini
-        mini-ai
-        mini-pairs
-        mini-surround
-        mini-operators
-        mini-splitjoin
-        mini-comment
-        mini-bracketed
-        mini-files
-        mini-cursorword
-        mini-hipatterns
+        mini-nvim
 
         # code navigation
         vim-tmux-navigator
@@ -92,9 +83,9 @@ in {
         snacks-nvim
         which-key-nvim
       ])
-      ++ [config-plugin];
+      ++ [ config-plugin ];
 
-    extraLuaConfig = ''
+    initLua = ''
       require('config').init()
     '';
   };

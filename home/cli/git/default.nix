@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.git = {
     enable = true;
     settings = {
@@ -39,7 +40,7 @@
       gui = {
         border = "rounded";
         theme = {
-          inactiveBorderColor = ["#363636"];
+          inactiveBorderColor = [ "#363636" ];
           activeBorderColor = [
             "default"
             "bold"

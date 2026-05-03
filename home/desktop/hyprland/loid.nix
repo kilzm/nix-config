@@ -3,7 +3,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   kb-icon = ./icons/kb.png;
 
   switch-layout-hw = pkgs.writeShellScriptBin "switch-layout" ''
@@ -12,7 +13,8 @@
     value=$(hyprctl devices | grep -i "$keyboard" -A 2 | tail -n1 | cut -d ' ' -f3-)
     notify-send -t 1800 -i ${kb-icon} "$value" "Changed keyboard layout to: $value"
   '';
-in {
+in
+{
   imports = [
     ./hyprgrass.nix
   ];
@@ -24,7 +26,7 @@ in {
         ",preferred,auto,1,mirror,eDP-1"
       ];
 
-      bind = ["$mainMod, space, exec, ${switch-layout-hw}/bin/switch-layout"];
+      bind = [ "$mainMod, space, exec, ${switch-layout-hw}/bin/switch-layout" ];
 
       # bindl = [
       #   ''
@@ -35,6 +37,6 @@ in {
   };
 
   services.hyprpaper = {
-    settings.wallpaper = ["eDP-1,${config.wallpaper.normal}"];
+    settings.wallpaper = [ "eDP-1,${config.wallpaper.normal}" ];
   };
 }

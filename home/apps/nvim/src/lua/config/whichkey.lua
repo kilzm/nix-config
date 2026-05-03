@@ -3,13 +3,14 @@ require('which-key').setup({
     icons = {
         mappings = false,
     },
+    preset = "modern",
 })
 
 require('which-key').add({
     { "<leader>f", desc = "Find" },
     { "<leader>g", group = "Git" },
-    { "<leader>l", group = "LSP" },
-    { "<leader>d", group = "Debugging" },
+    { "<leader>l", group = "Lsp" },
+    { "<leader>d", group = "Debug" },
     { "<leader>n", group = "Notifications" },
     { "<leader>P", hidden = true },
     { "<leader>Y", hidden = true },

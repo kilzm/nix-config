@@ -1,4 +1,5 @@
-{config, pkgs, ...}: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../core/ssd
@@ -30,7 +31,7 @@
         useOSProber = true;
       };
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       # "video=DP-1:2560x1440@165"
       # "video=DP-5:1920x1200@60"
@@ -42,18 +43,18 @@
       "i2c-dev"
       "i2c-piix4"
     ];
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
   };
-
-  # chaotic = {
-  #   mesa-git.enable = true;
-  # };
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [ nvidia-vaapi-driver libva-vdpau-driver libvdpau-va-gl ];
-    extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [ nvidia-vaapi-driver ];
   };
 
   # hardware.amdgpu = {
@@ -76,7 +77,7 @@
     enable = true;
   };
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   services.flatpak.enable = true;
 

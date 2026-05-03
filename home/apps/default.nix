@@ -1,8 +1,10 @@
 {
+  inputs,
   self,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./ghostty
     ./zsh
@@ -14,35 +16,42 @@
     ./thunderbird
   ];
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
-      protonvpn-gui
+      qbittorrent-enhanced
       vesktop
       telegram-desktop
-      chromium
       signal-desktop
       zotero
       solaar
+      brave
       vlc
       imhex
       pavucontrol
       pwvucontrol
-      mission-center
+      resources
       obs-studio
       gf
+      overskride
     ]
-    ++ (with self.packages.${pkgs.system}; [
+    ++ (with inputs.stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
+      protonvpn-gui
+    ])
+    ++ (with self.packages.${pkgs.stdenv.hostPlatform.system}; [
       gdb-frontend
     ]);
 
   xdg.mimeApps = {
+    enable = true;
     defaultApplications = {
-      "x-scheme-handler/tg" = ["org.telegram.desktop.desktop"];
-      "text/html" = "zen.desktop";
-      "x-scheme-handler/http" = "zen.desktop";
-      "x-scheme-handler/https" = "zen.desktop";
-      "x-scheme-handler/about" = "zen.desktop";
-      "x-scheme-handler/unknown" = "zen.desktop";
+      "x-scheme-handler/tg" = [ "org.telegram.desktop.desktop" ];
+      "text/html" = "zen-beta.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "application/xhtml+xml" = "zen-beta.desktop";
+      "x-scheme-handler/about" = "zen-beta.desktop";
+      "x-scheme-handler/unknown" = "zen-beta.desktop";
       "x-scheme-handler/terminal" = "com.mitchellh.ghostty.desktop";
     };
   };

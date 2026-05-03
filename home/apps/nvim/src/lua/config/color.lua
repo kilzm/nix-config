@@ -42,6 +42,7 @@ nightfox.setup({
         all = {
             WinBar = { bg = "none", fg = "fg2" },
             WinBarNC = { bg = "none", fg = "fg2" },
+            WinSeparator = { fg = "bg3" },
             StatusLine = { bg = "bg2" },
             StatusLineNC = { bg = "bg2" },
             Pmenu = { bg = "bg4" },
@@ -66,3 +67,6 @@ nightfox.setup({
 })
 
 vim.cmd("colorscheme nordfox")
+
+vim.api.nvim_set_hl(0, "WinBar", { bold = false })
+vim.api.nvim_set_hl(0, "WinBarNC", { bold = false })

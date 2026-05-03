@@ -1,10 +1,10 @@
 {
-  inputs,
   pkgs,
   config,
   host,
   ...
-}: {
+}:
+{
   imports = [
     ./${host}.nix
     ./hypridle.nix
@@ -22,7 +22,7 @@
     enable = true;
     systemd = {
       enable = true;
-      variables = ["--all"];
+      variables = [ "--all" ];
     };
     xwayland = {
       enable = true;
@@ -36,11 +36,11 @@
       "$fileManager" = "nautilus";
 
       general = {
-        gaps_in = 10;
-        gaps_out = 20;
+        gaps_in = 8;
+        gaps_out = "10, 16, 16, 16";
         border_size = 1;
-        "col.active_border" = "rgba(eeeeee22)";
-        "col.inactive_border" = "rgba(00000000)";
+        "col.active_border" = "rgba(68,68,68,0.6)";
+        "col.inactive_border" = "rgba(40,40,40,0.6)";
         layout = "dwindle";
       };
 
@@ -60,10 +60,10 @@
         rounding = 12;
         inactive_opacity = 1.0;
         shadow = {
-          enabled = false;
-          range = 20;
-          render_power = 3;
-          color = "0x55000000";
+          enabled = true;
+          range = 4;
+          render_power = 1;
+          color = "rgba(00000033)";
         };
         blur = {
           enabled = true;
@@ -86,19 +86,14 @@
         ];
 
         animation = [
-          # "windows, 1, 5, decel, popin 60%"
           "windows, 1, 5, decel"
           "windowsIn, 1, 5, decel"
           "windowsOut, 1, 7, decel"
           "border, 1, 1, linear"
-          "fade, 1, 3, decel"
           "workspaces, 1, 6, decel, slide"
           "specialWorkspace, 1, 6, decel, slidefadevert -50%"
-          "layers, 1, 4, decel, slide"
-          "layersIn, 1, 5, decel, slide"
-          "layersOut, 1, 4, accel"
-          "fadeLayersIn, 1, 3, decel"
-          "fadeLayersOut, 1, 3, accel"
+          "layers, 1, 3, decel"
+          "fade, 1, 3, decel"
         ];
       };
 
@@ -122,13 +117,13 @@
         "$mainMod, F, fullscreen"
         "$mainMod, E, exec, nautilus -w"
         "$mainMod, V, togglefloating"
-        ''$mainMod, R, exec, ags request "toggle applauncher"''
-        ''$shiftMod, Return, exec, ags request "toggle applauncher"''
+        "$mainMod, R, exec, fluctus-request toggle launcher"
+        "$shiftMod, Return, exec, fluctus-request toggle launcher"
         "$mainMod, T, togglesplit"
-        "$mainMod, B, exec, MOZ_LEGACY_PROFILES=1 zen"
+        "$mainMod, B, exec, MOZ_LEGACY_PROFILES=1 zen-beta"
         "$mainMod, D, exec, vesktop"
-        ''$mainMod, Escape, exec, ags request "toggle powermenu"''
-        ''$mainMod, Tab, exec, ags request "toggle quicksettings"''
+        "$mainMod, Escape, exec, fluctus-request toggle powermenu"
+        "$mainMod, Tab, exec, fluctus-request toggle quicksettings"
         "$mainMod, bracketleft, exec, clipman pick -t rofi"
         "$mainMod, bracketright, exec, hyprpicker -a"
         "$mainMod, Z, exec, hyprlock"
@@ -202,47 +197,19 @@
       ];
 
       layerrule = [
-        "animation popin 30%, powermenu"
-        "animation popin 30%, verification"
-        "animation slide down, applauncher"
-        "animation slide up, osd"
-        "animation slide down, calendar"
-        "animation slide down, quicksettings"
-        "animation slide down, notification"
-
-        "dimaround, powermenu"
-        "dimaround, verification"
-        "dimaround, verification"
-
-        "blur, bar"
-        "blur, applauncher"
-        "blur, powermenu"
-        "blur, verification"
-        "blur, osd"
-        "blur, calendar"
-        "blur, quicksettings"
-        "blur, notification"
-
-        "blurpopups, quickshell:.*"
-        "blur, quickshell:.*"
-        "ignorealpha [0.8], quickshell:.*"
-
-        "ignorealpha [0.8], bar"
-        "ignorealpha [0.8], applauncher"
-        "ignorealpha [0.8], powermenu"
-        "ignorealpha [0.8], verification"
-        "ignorealpha [0.8], osd"
-        "ignorealpha [0.8], calendar"
-        "ignorealpha [0.8], quicksettings"
-        "ignorealpha [0.8], notification"
+        "match:namespace ags:.*, blur on, ignore_alpha 0.6"
+        "match:namespace ags:launcher, animation popin 50%"
+        "match:namespace ags:powermenu, animation popin 50%"
+        "match:namespace ags:verification, animation popin 50%"
+        "match:namespace ags:osd, animation slide bottom"
+        "match:namespace ags:notification-popups, animation slide right"
+        "match:namespace ags:quicksettings, animation slide right"
       ];
 
       windowrule = [
-        "float, class:^(firefox)$, title:^(Picture-in-Picture)$"
-        "float, class:^(vlc)$"
-
-        "float, class:blueman-"
-        "float, class:^nm-"
+        "match:class ^(vlc)$, float on"
+        "match:class ^blueman-, float on"
+        "match:class ^nm-, float on"
       ];
 
       env = [
@@ -265,9 +232,9 @@
       };
 
       exec-once = [
+        "bash -lc 'fluctus >> /tmp/ags.log 2>&1"
         "hyprsunset"
         "swww-daemon"
-        "ags run --gtk4"
         ''wl-paste -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"''
       ];
     };

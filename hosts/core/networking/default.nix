@@ -1,4 +1,5 @@
-{host, pkgs, ...}: {
+{ host, pkgs, ... }:
+{
   networking = {
     nftables.enable = true;
     hostName = host;

@@ -1,6 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services.displayManager = {
-    sessionPackages = with pkgs; [hyprland];
+    sessionPackages = with pkgs; [ hyprland ];
   };
 
   services.displayManager.gdm = {

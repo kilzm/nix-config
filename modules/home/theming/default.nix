@@ -1,8 +1,10 @@
-{lib, ...}: let
-  mkThemingOption = {
-    name ? "",
-    pkg ? null,
-  }:
+{ lib, ... }:
+let
+  mkThemingOption =
+    {
+      name ? "",
+      pkg ? null,
+    }:
     lib.mkOption {
       type = lib.types.submodule {
         options = {
@@ -18,7 +20,8 @@
         };
       };
     };
-in {
+in
+{
   options = {
     theming = {
       fonts = lib.mkOption {
@@ -26,21 +29,21 @@ in {
           options = {
             sans = lib.mkOption {
               type = lib.types.str;
-              default = "Inter";
+              default = "Google Sans Flex";
             };
             mono = lib.mkOption {
               type = lib.types.str;
-              default = "ZedMono Nerd Font";
+              default = "Iosevka Nerd Font";
             };
           };
         };
-        default = {};
+        default = { };
       };
 
-      gtk = mkThemingOption {};
-      cursors = mkThemingOption {};
-      icons = mkThemingOption {};
-      qt = mkThemingOption {};
+      gtk = mkThemingOption { };
+      cursors = mkThemingOption { };
+      icons = mkThemingOption { };
+      qt = mkThemingOption { };
 
       ram = lib.mkOption {
         type = lib.types.str;

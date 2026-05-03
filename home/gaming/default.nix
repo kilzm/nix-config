@@ -2,12 +2,11 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   home.packages =
     (with pkgs; [
-      wine
       bottles
-      winetricks
       rare
       lutris
       protonplus
@@ -18,7 +17,7 @@
       azahar
       ryubing
     ])
-    ++ (with inputs.stable.legacyPackages.${pkgs.system}; [
+    ++ (with inputs.stable.legacyPackages.${pkgs.stdenv.hostPlatform.system}; [
     ]);
 
   xdg.configFile."MangoHud/MangoHud.conf".text = ''

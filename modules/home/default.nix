@@ -1,9 +1,11 @@
 {
   theming = import ./theming;
 
-  all = {...}: {
-    imports = [
-      ./theming
-    ];
-  };
+  all =
+    { ... }:
+    {
+      imports = [
+        ./theming
+      ];
+    };
 }

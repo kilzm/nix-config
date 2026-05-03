@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   services.fstrim.enable = true;
 
   services.udisks2 = {

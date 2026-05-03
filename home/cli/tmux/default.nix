@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   programs.tmux = {
     enable = true;
     terminal = "xterm-256color";
@@ -56,6 +57,9 @@
 
       set -g status-left "#[fg=#555555] #H ⟩ #S "
       set -g status-right "#[fg=#555555]%H:%M ⟨ %d-%m-%Y "
+
+      set -g pane-border-style fg=#333333
+      set -g pane-active-border-style fg=#555555
 
       set -g window-status-format " #[fg=#555555]#W: #I "
       set -g window-status-current-format " #[fg=white,bold]#W: #I "

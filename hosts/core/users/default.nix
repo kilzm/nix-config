@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   users.users.kilianm = {
     isNormalUser = true;
     description = "Kilian Markl";

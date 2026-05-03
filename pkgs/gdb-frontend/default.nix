@@ -57,6 +57,6 @@ stdenv.mkDerivation rec {
     homepage = "https://github.com/rohanrhu/gdb-frontend";
     mainProgram = "gdbfrontend";
     platforms = platforms.linux;
-    maintainers = with maintainers; [fufexan];
+    maintainers = with maintainers; [ fufexan ];
   };
 }

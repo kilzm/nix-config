@@ -31,7 +31,7 @@ cmp.setup({
         ['<Tab>'] = { 'select_and_accept', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
         ['<C-k>'] = { 'select_prev', 'fallback' },
-        ['<C-d>'] = { 'scroll_documentation_up' },
+        ['<C-b>'] = { 'scroll_documentation_up' },
         ['<C-f>'] = { 'scroll_documentation_down' },
     },
     signature = { enabled = true },

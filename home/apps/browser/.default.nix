@@ -1,8 +1,9 @@
-{ pkgs
-, lib
-, inputs
-, host
-, ...
+{
+  pkgs,
+  lib,
+  inputs,
+  host,
+  ...
 }:
 {
   nixpkgs.overlays = [ (import "${inputs.rycee-nur}/overlay.nix") ];

@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: let
+}:
+let
   xiaomi = "desc:Xiaomi Corporation Mi Monitor 3342300003039";
   dell = "desc:Dell Inc. DELL U2415 7MT0169R0CLS";
 
@@ -10,21 +11,24 @@
 
   switch-layout-kc = pkgs.writeShellScriptBin "switch-layout" ''
     keyboard="keychron-keychron-q8-keyboard"
+    icon=${kb-icon}
     hyprctl switchxkblayout $keyboard next
-    value=$(hyprctl devices | grep -i "$keyboard" -A 2 | tail -n1 | cut -d ' ' -f3-)
-    notify-send -t 2000 -i ${kb-icon} "$value" "Changed keyboard layout to: $value"
+    value=$(hyprctl -j devices \
+      | jq -r ".keyboards[] | select(.name == \"$keyboard\") | .active_keymap")
+
+    # Send notification
+    notify-send -t 2000 -a "Hyprland" \
+      "Keyboard Layout" \
+      "Changed keyboard layout to: $value"
   '';
-in {
+in
+{
   wayland.windowManager.hyprland = {
     settings = {
       monitor = [
         "${dell},1920x1200@60,0x0,1"
         "${xiaomi},2560x1440@165,1920x0,1"
       ];
-
-      experimental = {
-        xx_color_management_v4 = true;
-      };
 
       workspace = [
         "1, monitor:${xiaomi}, default:true"
