@@ -6,10 +6,30 @@
         force = true;
         default = "ddg";
       };
+
       settings = {
         "zen.urlbar.replace-newtab" = false;
         "xpinstall.signatures.required" = false;
       };
+
+      keyboardShortcuts = [
+        {
+          id = "zen-compact-mode-toggle";
+          key = "c";
+          modifiers = {
+            control = true;
+            alt = true;
+          };
+        }
+        {
+          id = "zen-toggle-sidebar";
+          key = "x";
+          modifiers = {
+            control = true;
+            alt = true;
+          };
+        }
+      ];
 
       pinsForce = true;
       pins = {
