@@ -10,7 +10,9 @@ export default function Battery() {
         <button
             visible={createBinding(battery, "isPresent")}
             class={"battery"}
-            onClicked={() => {setRevealed(!revealed())}}
+            onClicked={() => {
+                setRevealed(!revealed())
+            }}
         >
             <box>
                 <image iconName={createBinding(battery, "batteryIconName")} />
