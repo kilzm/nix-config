@@ -1,9 +1,6 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{inputs, ...}: {
   perSystem = {
+    lib,
     pkgs,
     self',
     ...
@@ -55,8 +52,7 @@
           bind C-i command-prompt -p "Rename active session to: " "run-shell 'tms rename %1'"
           bind C-l "run-shell 'tms refresh'"
 
-          # resurrect
-          set -g @resurrect-strategy-nvim 'session'
+          ${lib.range 1 9 |> map (n: "bind-key -n M-${toString n} select-window -t ${toString n}") |> lib.concatStringsSep "\n"}
 
           # status
           set -g status-left-length 40
