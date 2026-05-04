@@ -13,6 +13,8 @@
         ];
       };
 
+      programs.ghostty.settings.font-size = 14;
+
       home.stateVersion = "26.05";
     };
   };

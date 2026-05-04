@@ -7,14 +7,14 @@
   }: {
     home.packages = [(pkgs.writeShellScriptBin "xterm" "${lib.getExe pkgs.ghostty} $@")];
 
-    stylix.targets.ghostty.enable = true;
     programs.ghostty = {
       enable = true;
       settings = {
-        theme = lib.mkForce "Nordfox";
-        background = lib.mkForce "#${config.lib.stylix.colors.base00}";
+        theme = "Nordfox";
+        background = "#${config.lib.stylix.colors.base00}";
         background-opacity = config.stylix.opacity.terminal;
-        font-size = lib.mkForce 13;
+        font-family = config.stylix.fonts.monospace.name;
+        font-size = lib.mkDefault 13;
         window-padding-x = 12;
         window-padding-y = 6;
         adjust-cell-height = "40%";
@@ -27,6 +27,7 @@
         window-decoration = false;
         confirm-close-surface = false;
         mouse-scroll-multiplier = 1;
+        mouse-hide-while-typing = true;
 
         custom-shader = ["${./shaders/cursor_warp.glsl}"];
 
