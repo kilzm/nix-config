@@ -5,7 +5,10 @@
     pkgs,
     ...
   }: {
-    home.packages = [(pkgs.writeShellScriptBin "xterm" "${lib.getExe pkgs.ghostty} $@")];
+    home = {
+      packages = [(pkgs.writeShellScriptBin "xterm" "${lib.getExe pkgs.ghostty} $@")];
+      sessionVariables = {TERMINAL = "ghostty";};
+    };
 
     programs.ghostty = {
       enable = true;
