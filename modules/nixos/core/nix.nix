@@ -13,6 +13,7 @@
         keep-outputs = true;
         keep-derivations = true;
         warn-dirty = false;
+        trusted-users = ["@wheel"];
       };
     };
 
