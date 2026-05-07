@@ -11,6 +11,11 @@
           class = "scratch.term";
           cmd = "ghostty --class=${class}";
         };
+        btop = rec {
+          key = "T";
+          class = "scratch.btop";
+          cmd = "ghostty --class=${class} -e btop";
+        };
         yazi = rec {
           key = "E";
           class = "scratch.yazi";
@@ -45,11 +50,6 @@
           key = "A";
           class = "com.saivert.pwvucontrol";
           cmd = "pwvucontrol";
-        };
-        resources = {
-          key = "T";
-          class = "net.nokyan.Resources";
-          cmd = "resources";
         };
       };
 
