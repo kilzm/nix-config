@@ -48,7 +48,7 @@ local options = {
     titlestring = "Neovim - %t",
     linespace = 1,
 
-    laststatus = 2,
+    laststatus = 0,
     statusline = " %t %=%l:%c ",
 }
 
