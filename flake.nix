@@ -20,7 +20,7 @@
 
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
-    stylix.url = "github:danth/stylix";
+    stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.flake-parts.follows = "flake-parts";
 
