@@ -38,7 +38,7 @@
         "$mod, C, killactive"
         "$mod, F, fullscreen"
         "$mod, V, togglefloating"
-        "$mod, T, togglesplit"
+        "$mod, T, layoutmsg, togglesplit"
 
         "$mod+CTRL, S, movetoworkspace, special"
         "$mod, S, togglespecialworkspace"
