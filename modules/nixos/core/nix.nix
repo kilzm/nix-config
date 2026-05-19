@@ -4,6 +4,7 @@
       inputs.nix-index-database.nixosModules.nix-index
     ];
 
+    programs.nix-index.enableFishIntegration = false;
     programs.nix-index-database.comma.enable = true;
     environment.sessionVariables = {COMMA_ASK_TO_CONFIRM = "true";};
 
