@@ -3,7 +3,6 @@
     imports = with self.homeModules; [
       btop
       direnv
-      fzf
       git
       mime
       neovim
