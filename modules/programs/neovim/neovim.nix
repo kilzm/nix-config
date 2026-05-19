@@ -10,7 +10,7 @@
         aliases = ["vi"];
       };
 
-      extraPackages = [
+      runtimePkgs = [
         pkgs.wl-clipboard
       ];
 

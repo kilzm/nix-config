@@ -23,7 +23,7 @@
         continuum
       ];
 
-      extraPackages = with pkgs; [
+      runtimePkgs = with pkgs; [
         tmux-sessionizer
       ];
 

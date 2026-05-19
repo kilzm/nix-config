@@ -1,6 +1,6 @@
 {self, ...}: {
   flake.modules.neovim.nix = {pkgs, ...}: {
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       nixd
       alejandra
     ];
@@ -29,7 +29,7 @@
   };
 
   flake.modules.neovim.lsp = {pkgs, ...}: {
-    extraPackages = with pkgs; [
+    runtimePkgs = with pkgs; [
       bash-language-server
       lua-language-server
       clang-tools
