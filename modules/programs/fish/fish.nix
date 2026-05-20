@@ -3,7 +3,11 @@
   self,
   ...
 }: {
-  flake.modules.fish.default = {pkgs, ...}: {
+  flake.modules.fish.default = {
+    pkgs,
+    self',
+    ...
+  }: {
     flags = {
       "--no-config" = false;
     };
@@ -15,6 +19,7 @@
 
     runtimePkgs = [
       pkgs.zoxide
+      self'.packages.eza
     ];
 
     configFile.content =
