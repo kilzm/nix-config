@@ -6,6 +6,7 @@
       session
       zen-browser
       discord
+      mime
       qt
       spicetify
     ];

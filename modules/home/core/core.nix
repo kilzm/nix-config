@@ -5,7 +5,6 @@
       btop
       direnv
       git
-      mime
       neovim
       shell
       tldr
