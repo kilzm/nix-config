@@ -14,14 +14,17 @@
       tmux-sessionizer
     ];
 
-    xdg.configFile."tms/config.toml".text = ''
-      [[search_dirs]]
-      path = "${config.home.homeDirectory}/projects"
-      depth = 2
-
-      [[search_dirs]]
-      path = "${config.home.homeDirectory}/nix-config"
-      depth = 1
-    '';
+    xdg.configFile."tms/config.toml".source = (pkgs.formats.toml {}).generate "config.toml" {
+      search_dirs = [
+        {
+          path = "${config.home.homeDirectory}/projects";
+          depth = 2;
+        }
+        {
+          path = "${config.home.homeDirectory}/nix-config";
+          depth = 1;
+        }
+      ];
+    };
   };
 }
