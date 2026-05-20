@@ -68,8 +68,14 @@
       };
     in
       {
-        c = "clear";
-        e = "yazi";
+        c = {
+          expansion = "clear";
+          position = "command";
+        };
+        e = {
+          expansion = "yazi";
+          position = "command";
+        };
       }
       // nixAbbreviations
       // gitAbbreviations;
