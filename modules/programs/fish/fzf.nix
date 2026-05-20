@@ -21,7 +21,7 @@
         "--margin 1"
         "--border none"
       ];
-      LS_COLORS =  "di=34:ln=36:ex=32";
+      LS_COLORS = "di=34:ln=36:ex=32";
     };
   };
 }
