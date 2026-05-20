@@ -49,7 +49,7 @@
             bat
           ]);
       in [
-        ["PATH" ":" lib.makeBinPath packages]
+        ["PATH" ":" (lib.makeBinPath packages)]
       ];
     };
   };
