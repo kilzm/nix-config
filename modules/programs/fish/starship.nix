@@ -110,7 +110,8 @@
     env = {
       STARSHIP_CONFIG = config;
     };
-    configFile.content = ''
-      ${lib.getExe pkgs.starship} init fish | source'';
+    configFile.content =
+      # fish
+      ''${lib.getExe pkgs.starship} init fish | source'';
   };
 }
