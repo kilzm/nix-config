@@ -5,48 +5,47 @@
     ...
   }: {
     shellAliases = let
-      eza = lib.getExe self'.packages.eza;
-    in {
-      ls = "${eza}";
-      ll = "${eza} -l";
-      la = "${eza} -a";
-      lla = "${eza} -la";
-      lt = "${eza} --tree";
-    };
+      ezaAliases =
+        {
+          ls = "";
+          ll = "-l";
+          la = "-a";
+          lla = "-la";
+          lt = "--tree";
+        }
+        |> lib.mapAttrs (_: v: "${lib.getExe self'.packages.eza} ${v}");
+    in
+      {}
+      // ezaAliases;
 
     abbreviations = let
-      nixcmds = {
-        nd = "nix develop";
-        ns = "nix shell";
-        nb = "nix build";
-        nr = "nix run";
-      };
+      nixAbbreviations = let
+        simple = {
+          nd = "nix develop";
+          ns = "nix shell";
+          nb = "nix build";
+          nr = "nix run";
+        };
 
-      simple = nixcmds |> builtins.mapAttrs (k: v: "${v}");
+        local =
+          simple
+          |> lib.mapAttrs' (n: v:
+            lib.nameValuePair "${n}." {
+              cursor = true;
+              expansion = "${v} .#%";
+            });
 
-      local =
-        nixcmds
-        |> lib.mapAttrs' (k: v: {
-          name = "${k}.";
-          value = {
-            cursor = true;
-            expansion = "${v} .#%";
-          };
-        });
+        nixpkgs =
+          simple
+          |> lib.mapAttrs' (n: v:
+            lib.nameValuePair "${n}n" {
+              cursor = true;
+              expansion = "${v} nixpkgs#%";
+            });
+      in
+        simple // local // nixpkgs;
 
-      nixpkgs =
-        nixcmds
-        |> lib.mapAttrs' (k: v: {
-          name = "${k}n";
-          value = {
-            cursor = true;
-            expansion = "${v} nixpkgs#%";
-          };
-        });
-
-      nix-abbreviations = simple // local // nixpkgs;
-
-      git-abbreviations = {
+      gitAbbreviations = {
         gd = "git diff";
         ga = "git add";
         gc = "git commit";
@@ -66,14 +65,13 @@
         gstd = "git stash drop";
         gsts = "git stash show -p";
         gl = "git log --all --graph --pretty=format:\\\"%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n\\\"";
-        lg = "lazygit";
       };
     in
-      nix-abbreviations
-      // git-abbreviations
-      // {
+      {
         c = "clear";
         e = "yazi";
-      };
+      }
+      // nixAbbreviations
+      // gitAbbreviations;
   };
 }
