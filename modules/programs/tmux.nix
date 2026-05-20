@@ -40,17 +40,23 @@
         # tmux
         ''
           # binds
-          bind | split-window -h
-          bind - split-window -v
-          bind t set -g status
+          bind | split-window -h -c "#{pane_current_path}"
+          bind - split-window -v -c "#{pane_current_path}"
+          bind v split-window -h -c "#{pane_current_path}"
+          bind h split-window -v -c "#{pane_current_path}"
+
+          bind -r M-h resize-pane -L 5
+          bind -r M-j resize-pane -D 5
+          bind -r M-k resize-pane -U 5
+          bind -r M-l resize-pane -R 5
+
+          ${lib.range 1 9 |> map (n: "bind-key -n M-${toString n} select-window -t ${toString n}") |> lib.concatStringsSep "\n"}
 
           bind C-o display-popup -E "tms"
           bind C-j display-popup -E "tms switch"
           bind C-w display-popup -E "tms windows"
           bind C-i command-prompt -p "Rename active session to: " "run-shell 'tms rename %1'"
           bind C-l "run-shell 'tms refresh'"
-
-          ${lib.range 1 9 |> map (n: "bind-key -n M-${toString n} select-window -t ${toString n}") |> lib.concatStringsSep "\n"}
 
           # border
           set -g pane-border-style fg=${c.dark}
