@@ -1,0 +1,11 @@
+{
+  flake.homeModules.bat = {
+    stylix.targets.bat.enable = true;
+    programs.bat = {
+      enable = true;
+      config = {
+        style = "numbers";
+      };
+    };
+  };
+}

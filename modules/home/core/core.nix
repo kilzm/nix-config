@@ -1,6 +1,7 @@
 {self, ...}: {
   flake.homeModules.core = {
     imports = with self.homeModules; [
+      bat
       btop
       direnv
       git
