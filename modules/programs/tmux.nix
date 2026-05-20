@@ -8,19 +8,22 @@
     packages.tmux = inputs.wrapper-modules.wrappers.tmux.wrap {
       inherit pkgs;
 
+      shell = lib.getExe self'.packages.fish;
+      terminal = "tmux-256color";
+
       sourceSensible = true;
+      baseIndex = 1;
+      mouse = true;
+      escapeTime = 0;
+      updateEnvironment = ["TERM"];
+
       prefix = "C-Space";
       modeKeys = "vi";
       statusKeys = "vi";
-      shell = lib.getExe self'.packages.fish;
-      escapeTime = 0;
-      baseIndex = 1;
-      mouse = true;
 
       plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator
         resurrect
-        continuum
       ];
 
       runtimePkgs = with pkgs; [
@@ -37,11 +40,6 @@
         # tmux
         ''
           # binds
-          set -s extended-keys on
-          set-option -g xterm-keys on
-          set -as terminal-features 'xterm*:extkeys'
-          set-option -g allow-passthrough on
-
           bind | split-window -h
           bind - split-window -v
           bind t set -g status
@@ -54,19 +52,20 @@
 
           ${lib.range 1 9 |> map (n: "bind-key -n M-${toString n} select-window -t ${toString n}") |> lib.concatStringsSep "\n"}
 
+          # border
+          set -g pane-border-style fg=${c.dark}
+          set -g pane-active-border-style fg=${c.base}
+
           # status
           set -g status-left-length 40
           set -g status-position top
           set -g status-justify centre
 
-          set -g status-style bg=default
-          set -g status-style fg=default
+          set -g status-style bg=default,fg=default
 
           set -g status-left "#[bold,fg=${c.light}]  #H #[nobold,fg=${c.base}]on #[bold,fg=${c.light}]  #S#[nobold]"
           set -g status-right "#[fg=${c.light}]%d-%m-%Y #[fg=${c.base}]at#[fg=${c.light}] %H:%M"
 
-          set -g pane-border-style fg=${c.dark}
-          set -g pane-active-border-style fg=${c.base}
 
           set -g window-status-format " #[fg=${c.base},bold]#I#[nobold]: #W "
           set -g window-status-current-format \
