@@ -43,7 +43,7 @@ local options = {
 
     confirm = true,
 
-    shell = "zsh",
+    shell = "fish",
     title = true,
     titlestring = "Neovim - %t",
     linespace = 1,
