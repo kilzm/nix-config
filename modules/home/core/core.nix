@@ -6,6 +6,7 @@
       direnv
       git
       neovim
+      opencode
       shell
       tldr
       tmux
