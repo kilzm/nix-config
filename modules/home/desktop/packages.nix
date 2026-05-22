@@ -15,6 +15,7 @@
       telegram-desktop
       signal-desktop
 
+      libreoffice
       vlc
       musescore
       gimp3-with-plugins
@@ -25,7 +26,6 @@
       imhex
     ];
 
-    programs.onlyoffice.enable = true;
     programs.thunderbird.enable = true;
   };
 }
