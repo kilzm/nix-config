@@ -22,6 +22,13 @@
       self'.packages.eza
     ];
 
+    # enable completions
+    plugins = [
+      pkgs.zoxide
+      self'.packages.eza
+    ];
+
+
     configFile.content =
       # fish
       ''

@@ -45,7 +45,6 @@
           ++ (with pkgs; [
             direnv
             lazygit
-            zoxide
             bat
           ]);
       in [
