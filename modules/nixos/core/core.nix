@@ -9,7 +9,6 @@
       memory
       network
       nix
-      plymouth
       shell
       ssd
       users
