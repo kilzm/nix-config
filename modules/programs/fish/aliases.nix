@@ -21,31 +21,31 @@
 
     abbreviations = let
       nixAbbreviations = let
-        mkAbbr = suffix: mkEntry:
+        mkAbbr = c: extra:
           {
             d = "develop";
             s = "shell";
             b = "build";
             r = "run";
           }
-          |> lib.mapAttrs' (
-            n: v:
-              lib.nameValuePair
-              "n${n}${suffix}"
-              (mkEntry "nix ${v}" // {position = "command";})
-          );
+          |> lib.concatMapAttrs (n: v: let
+            mkEntry = expansion: {
+              inherit expansion;
+              cursor = true;
+              position = "command";
+            };
+          in {
+            "n${n}${c}" = mkEntry "nix ${v} ${extra}%";
+            "n${n}${c}i" = mkEntry "NIXPKGS_ALLOW_UNFREE=1 nix ${v} --impure ${extra}%";
+          });
       in
-        mkAbbr "" (v: {
-          expansion = v;
-        })
-        // mkAbbr "." (v: {
-          cursor = true;
-          expansion = "${v} .#%";
-        })
-        // mkAbbr "n" (v: {
-          cursor = true;
-          expansion = "${v} nixpkgs#%";
-        });
+        mkAbbr "" " "
+        // mkAbbr "." ".#"
+        // mkAbbr "n" "nixpkgs#"
+        // mkAbbr "g" "github:"
+        // mkAbbr "f" "git+file://"
+        // mkAbbr "p" "path:"
+        // mkAbbr "l" "gitlab:";
 
       gitAbbreviations = let
         mkAbbr = cmds:
