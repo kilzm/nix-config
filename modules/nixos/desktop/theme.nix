@@ -13,6 +13,11 @@
         name = "phinger-cursors-dark";
         size = 24;
       };
+
+      targets = {
+        qt.enable = true;
+        gtk.enable = true;
+      };
     };
   };
 }
