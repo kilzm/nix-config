@@ -28,7 +28,6 @@
       self'.packages.eza
     ];
 
-
     configFile.content =
       # fish
       ''

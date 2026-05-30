@@ -1,5 +1,9 @@
 {
-  flake.nixosModules.displaymanager = {lib, pkgs, ...}: {
+  flake.nixosModules.displaymanager = {
+    lib,
+    pkgs,
+    ...
+  }: {
     services.greetd = {
       enable = true;
       settings = {

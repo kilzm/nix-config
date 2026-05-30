@@ -1,5 +1,9 @@
 {
-  flake.homeModules.shell = {self', lib, ...}: {
+  flake.homeModules.shell = {
+    self',
+    lib,
+    ...
+  }: {
     programs.fish = {
       enable = true;
       package = self'.packages.fish;
