@@ -6,7 +6,6 @@
 
     programs.nix-index.enableFishIntegration = false;
     programs.nix-index-database.comma.enable = true;
-    environment.sessionVariables = {COMMA_ASK_TO_CONFIRM = "true";};
 
     nixpkgs.config.allowUnfree = true;
     nix = {
