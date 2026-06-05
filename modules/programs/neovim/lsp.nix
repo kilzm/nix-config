@@ -37,6 +37,9 @@
       rust-analyzer
       basedpyright
       typescript-language-server
+      vala-language-server
+      blueprint-compiler
+      mesonlsp
       marksman
       glsl_analyzer
       texlab
@@ -53,7 +56,20 @@
         # lua
         ''
           local capabilities = require('blink.cmp').get_lsp_capabilities({})
-          local servers = { 'bashls', 'lua_ls', 'clangd', 'ols', 'rust-analyzer', 'ts_ls', 'marksman', 'glsl_analyzer', 'texlab' }
+          local servers = {
+              'bashls',
+              'lua_ls',
+              'clangd',
+              'ols',
+              'rust-analyzer',
+              'ts_ls',
+              'vala_ls',
+              'blueprint_ls',
+              'mesonlsp',
+              'marksman',
+              'glsl_analyzer',
+              'texlab',
+          }
           for _, server in ipairs(servers) do
               vim.lsp.enable(server)
               vim.lsp.config(server, {

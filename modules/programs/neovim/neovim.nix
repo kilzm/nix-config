@@ -31,21 +31,21 @@
           mini-nvim
           nvim-lspconfig
           nvim-treesitter.withAllGrammars
+          (nvim-treesitter.withPlugins (p: [p.tree-sitter-blueprint]))
 
           blink-cmp
           luasnip
           friendly-snippets
+          lazydev-nvim
 
           vim-matchup
           vim-tmux-navigator
-
-          nightfox-nvim
-          lazydev-nvim
 
           gitsigns-nvim
           todo-comments-nvim
           which-key-nvim
 
+          nightfox-nvim
           nui-nvim
           noice-nvim
           dropbar-nvim

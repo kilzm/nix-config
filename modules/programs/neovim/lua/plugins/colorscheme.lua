@@ -26,6 +26,9 @@ return {
         require("nightfox").setup({
             options = {
                 transparent = true,
+                styles = {
+                  comments = "italic",
+                },
             },
             palettes = {
                 all = {
@@ -61,6 +64,7 @@ return {
                     MiniFilesTitle = { link = "NormalFloat" },
                     MiniFilesTitleFocused = { link = "NormalFloat" },
                     NonText = { fg = brighten(foreground, 0.6) },
+                    EndOfBuffer = { fg = "sel0" },
                     LspInlayHint = { bg = "none", fg = "sel0" },
                     LspReferenceText = { bg = "bg4" },
                     SnacksIndent = { fg = "bg4" },

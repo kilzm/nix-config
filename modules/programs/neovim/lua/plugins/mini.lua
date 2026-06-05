@@ -14,6 +14,19 @@ return {
             require("mini.bracketed").setup()
             require("mini.cursorword").setup()
 
+            MiniComment.setup({
+                options = {
+                    custom_commentstring = function()
+                        if vim.bo.filetype == "vala" then
+                            return "// %s"
+                        end
+                        if vim.bo.filetype == "blueprint" then
+                            return "// %s"
+                        end
+                    end,
+                },
+            })
+
             MiniAi.setup({
                 custom_textobjects = {
                     m = MiniAi.gen_spec.treesitter(
