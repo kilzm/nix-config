@@ -9,10 +9,13 @@ let
     pname = "soh";
     version = "9.2.3";
 
+    description = "PC port of Ocarina of Time with modern controls, widescreen, high-resolution, and more";
+
     desktopItem = makeDesktopItem {
       name = pname;
       exec = "soh";
       desktopName = "Ship of Harkinian";
+      comment = description;
       icon = fetchurl {
         url = "https://raw.githubusercontent.com/HarbourMasters/Shipwright/${version}/soh/macosx/sohIcon.png";
         hash = "sha256-M//KmohmKXALzpLzNNPUYNpI9BshlIVMAoDeo/ZFGFA=";
@@ -42,6 +45,7 @@ let
 
       meta = {
         homepage = "https://www.shipofharkinian.com/";
+        inherit description;
         downloadPage = "https://github.com/HarbourMasters/Shipwright/releases";
         platforms = ["x86_64-linux"];
         mainProgram = "soh";

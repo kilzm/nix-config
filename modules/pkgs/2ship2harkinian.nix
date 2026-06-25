@@ -9,10 +9,13 @@ let
     pname = "2s2h";
     version = "4.0.2";
 
+    description = "PC port of Majora's Mask with modern controls, widescreen, high-resolution, and more";
+
     desktopItem = makeDesktopItem {
       name = pname;
       exec = "2s2h";
       desktopName = "2 Ship 2 Harkinian";
+      comment = description;
       icon = fetchurl {
         url = "https://raw.githubusercontent.com/HarbourMasters/2ship2harkinian/${version}/mm/macosx/2s2hIcon.png";
         hash = "sha256-Mk2XvJgyT/YX+CZbASdZcNwmAOmWOTmGW/+lK0lGDwQ=";
@@ -41,7 +44,8 @@ let
       '';
 
       meta = {
-        downloadPage = "https://github.com/HarbourMasters/2ship2harkinian/releases";
+        downloadPage = "https://github.com/HarbourMasters/2ship2harkinian";
+        inherit description;
         platforms = ["x86_64-linux"];
         mainProgram = "2s2h";
       };
