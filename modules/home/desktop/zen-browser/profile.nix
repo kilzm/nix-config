@@ -8,7 +8,6 @@
       };
 
       settings = {
-        "zen.urlbar.replace-newtab" = false;
         "xpinstall.signatures.required" = false;
       };
 
