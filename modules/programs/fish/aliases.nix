@@ -36,7 +36,7 @@
             };
           in {
             "n${n}${c}" = mkEntry "nix ${v} ${extra}%";
-            "n${n}${c}i" = mkEntry "NIXPKGS_ALLOW_UNFREE=1 nix ${v} --impure ${extra}%";
+            "n${n}${c}u" = mkEntry "NIXPKGS_ALLOW_UNFREE=1 nix ${v} --impure ${extra}%";
           });
       in
         mkAbbr "" " "
@@ -67,6 +67,7 @@
           a = "add";
           c = "commit";
           ca = "commit --amend";
+          can = "commit --amend --no-edit";
           cm = ''commit -m \"%\"'';
           p = "push";
           u = "pull";
