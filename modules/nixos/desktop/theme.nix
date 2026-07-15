@@ -1,11 +1,11 @@
 {
-  flake.nixosModules.desktop = {pkgs, ...}: {
+  flake.nixosModules.desktop = {pkgs, self', ...}: {
     stylix = {
       icons = {
         enable = true;
-        package = pkgs.morewaita-icon-theme;
-        light = "MoreWaita";
-        dark = "MoreWaita";
+        package = self'.packages.hatter-icon-theme;
+        light = "Hatter";
+        dark = "Hatter";
       };
 
       cursor = {
