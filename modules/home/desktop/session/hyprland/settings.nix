@@ -44,10 +44,10 @@
           ignore_opacity = true;
           size = 10;
           passes = 4;
-          contrast = 1.0;
-          brightness = 1.0;
           popups = true;
           noise = 0.015;
+          vibrancy = 0.5;
+          vibrancy_darkness = 2.0;
         };
       };
 
