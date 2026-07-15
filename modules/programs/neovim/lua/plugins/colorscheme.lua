@@ -27,7 +27,7 @@ return {
             options = {
                 transparent = true,
                 styles = {
-                  comments = "italic",
+                    comments = "italic",
                 },
             },
             palettes = {

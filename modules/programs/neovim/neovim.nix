@@ -3,12 +3,20 @@
   self,
   ...
 }: {
-  flake.modules.neovim.default = {pkgs, ...}: {
+  flake.modules.neovim.default = {
+    config,
+    pkgs,
+    ...
+  }: {
     config = {
       settings = {
         config_directory = ./.;
         aliases = ["vi"];
       };
+
+      drv.postInstall = ''
+        sed -i 's/^Icon=.*/Icon=nvim/' ${placeholder config.outputName}/share/applications/nvim.desktop
+      '';
 
       runtimePkgs = [
         pkgs.wl-clipboard
@@ -57,6 +65,19 @@
           nvim-dap
           nvim-dap-ui
           nvim-dap-virtual-text
+
+          (pkgs.vimUtils.buildVimPlugin {
+            name = "sail-vim";
+            src =
+              pkgs.fetchFromGitHub {
+                owner = "rems-project";
+                repo = "sail";
+                rev = "0.20.2";
+                hash = "sha256-+ixT1tC5afb3BLFKfBUzmQ1UBXx1dyw8rn6+S0y6S1E=";
+                sparseCheckout = ["editors/vim"];
+              }
+              + "/editors/vim";
+          })
         ];
       };
 

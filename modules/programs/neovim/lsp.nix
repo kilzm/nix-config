@@ -34,6 +34,7 @@
       lua-language-server
       clang-tools
       ols
+      ocamlPackages.ocaml-lsp
       rust-analyzer
       basedpyright
       typescript-language-server
@@ -60,8 +61,9 @@
               'bashls',
               'lua_ls',
               'clangd',
+              'rust_analyzer',
               'ols',
-              'rust-analyzer',
+              'ocamllsp',
               'ts_ls',
               'vala_ls',
               'blueprint_ls',
@@ -87,6 +89,18 @@
                       },
                   },
               },
+          })
+
+          local util = require('lspconfig.util')
+
+          vim.lsp.enable('ocamllsp')
+          vim.lsp.config('ocamllsp', {
+              capabilities = capabilities,
+              cmd = { 'ocamllsp', '--fallback-read-dot-merlin' },
+              settings = {
+                  codelens = { enable = true },
+                  inlayHints = { hintPatternVariables = true, hintLetBindings = true },
+              }
           })
         '';
     };
