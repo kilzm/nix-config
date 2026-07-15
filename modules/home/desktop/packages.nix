@@ -13,6 +13,7 @@
 
       zoom-us
       telegram-desktop
+      slack
       signal-desktop
 
       libreoffice
