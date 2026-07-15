@@ -7,6 +7,14 @@
 
       settings = {
         autoupdate = false;
+        lsp = true;
+
+        permission = {
+          external_directory = {
+            "~/projects/**" = "allow";
+            "~/github/**" = "allow";
+          };
+        };
       };
 
       themes.stylix.theme = {
