@@ -14,7 +14,7 @@
       "$terminal" = "ghostty";
       "$filemanager" = "nautilus -w";
       "$browser" = "zen-beta";
-      "$discord" = "vesktop";
+      "$discord" = "discord";
       "$shell" = "fluctus-request";
 
       bind = [

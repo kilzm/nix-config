@@ -20,6 +20,8 @@
 
     cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
+    nixcord.url = "github:4evy/nixcord";
+
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
     stylix.inputs.flake-parts.follows = "flake-parts";
