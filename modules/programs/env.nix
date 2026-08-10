@@ -41,6 +41,7 @@
             neovim
             tmux
             git
+            opencode
           ])
           ++ (with pkgs; [
             direnv
