@@ -12,8 +12,8 @@ let
       src = fetchFromGitHub {
         owner = "Mibea";
         repo = "Hatter";
-        rev = "40776510270bf89f748f85ee9aa4c58eef1c1d52";
-        hash = "sha256-gt21AHc3ceYT8T76FWUtx+NfDOeV48SU+23B982QId0=";
+        rev = "c92b36cc439e2e82ae1ec864ed9c16d5ddd28bc6";
+        hash = "sha256-EQMsEjUxv9wyIWg6k/rc4FvhPBqq820Y/MgeG5KytVQ=";
       };
 
       nativeBuildInputs = [gtk4];
@@ -32,6 +32,7 @@ let
         done
 
         ln -s ausweisapp.svg "$out/share/icons/Hatter/scalable/apps/AusweisApp.svg"
+        ln -s ImHex.svg "$out/share/icons/Hatter/scalable/apps/imhex.svg"
 
         for d in $out/share/icons/*/; do
           gtk4-update-icon-cache -f -t "$d" || true
