@@ -1,5 +1,9 @@
 {
-  flake.nixosModules.desktop = {pkgs, self', ...}: {
+  flake.nixosModules.desktop = {
+    pkgs,
+    self',
+    ...
+  }: {
     stylix = {
       icons = {
         enable = true;

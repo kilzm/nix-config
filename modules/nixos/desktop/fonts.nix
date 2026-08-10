@@ -1,7 +1,6 @@
 {
   flake.nixosModules.fonts = {
     pkgs,
-    self',
     ...
   }: {
     fonts.fontconfig = {
@@ -19,8 +18,8 @@
 
     stylix.fonts = rec {
       sansSerif = {
-        package = self'.packages.google-sans-flex;
-        name = "Google Sans Flex";
+        package = pkgs.adwaita-fonts;
+        name = "Adwaita Sans";
       };
 
       serif = sansSerif;
