@@ -1,11 +1,11 @@
 {
   flake.homeModules.gaming = {
-    pkgs,
     self',
+    inputs',
     ...
   }: {
     home.packages = [
-      pkgs.dusklight
+      inputs'.dusklight.packages.default
       self'.packages.shipwright
       self'.packages._2ship2harkinian
     ];

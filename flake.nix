@@ -39,6 +39,8 @@
 
     wlctl.url = "github:aashish-thapa/wlctl";
     wlctl.inputs.nixpkgs.follows = "nixpkgs";
+
+    dusklight.url = "git+https://github.com/TwilitRealm/dusklight?ref=refs/tags/v1.4.1&submodules=1&shallow=1";
   };
 
   outputs = inputs:
