@@ -1,0 +1,7 @@
+hl.layer_rule({ match = { namespace = "ags:.*" }, blur = true, ignore_alpha = 0.6 })
+hl.layer_rule({ match = { namespace = "ags:launcher" }, animation = "popin 50%" })
+hl.layer_rule({ match = { namespace = "ags:powermenu" }, animation = "popin 50%" })
+hl.layer_rule({ match = { namespace = "ags:verification" }, animation = "popin 50%" })
+hl.layer_rule({ match = { namespace = "ags:osd" }, animation = "slide bottom" })
+hl.layer_rule({ match = { namespace = "ags:notification-popups" }, animation = "slide right" })
+hl.layer_rule({ match = { namespace = "ags:quicksettings" }, animation = "slide right" })

@@ -22,8 +22,12 @@
       };
     };
 
-    wayland.windowManager.hyprland.settings.exec-once = [
-      "awww-daemon"
-    ];
+    wayland.windowManager.hyprland.extraLuaFiles."conf.awww" = {
+      content = ''
+        hl.on("hyprland.start", function()
+          hl.exec_cmd("awww-daemon")
+        end)
+      '';
+    };
   };
 }

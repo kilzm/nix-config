@@ -1,5 +1,5 @@
 {self, ...}: {
-  flake.nixosModules.eris = {lib, ...}: {
+  flake.nixosModules.eris = _: {
     home-manager.users.kilianm = {
       imports = with self.homeModules; [
         core
@@ -7,28 +7,34 @@
         gaming
       ];
 
-      wayland.windowManager.hyprland.settings = let
-        xiaomi = "desc:Xiaomi Corporation Mi Monitor 3342300003039";
-        dell = "desc:Dell Inc. DELL U2415 7MT0169R0CLS";
-      in {
-        monitor = lib.mkForce [
-          "${dell},1920x1200@60,0x0,1"
-          "${xiaomi},2560x1440@165,1920x0,1"
-        ];
+      wayland.windowManager.hyprland.extraLuaFiles."conf.eris" = {
+        content =
+          # lua
+          ''
+            hl.monitor({
+                output = "desc:Dell Inc. DELL U2415 7MT0169R0CLS",
+                mode = "1920x1200@59.95",
+                position = "0x0",
+                scale = 1,
+            })
+            hl.monitor({
+                output = "desc:Xiaomi Corporation Mi Monitor 3342300003039",
+                mode = "2560x1440@165.00",
+                position = "1920x0",
+                scale = 1,
+            })
 
-        workspace =
-          lib.range 1 10
-          |> map (n: let
-            ws = toString n;
-            monitor =
-              if lib.mod n 2 == 1
-              then xiaomi
-              else dell;
-            default =
-              if n <= 2
-              then ", default:true"
-              else "";
-          in "${ws}, monitor:${monitor}${default}");
+            for i = 1, 10 do
+                local monitor =
+                    i % 2 == 1 and "desc:Xiaomi Corporation Mi Monitor 3342300003039"
+                    or "desc:Dell Inc. DELL U2415 7MT0169R0CLS"
+                hl.workspace_rule({
+                    workspace = tostring(i),
+                    monitor = monitor,
+                    default = i <= 2,
+                })
+            end
+          '';
       };
 
       home.stateVersion = "26.05";
