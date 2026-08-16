@@ -8,6 +8,7 @@
       neovim
       opencode
       shell
+      ssh
       tldr
       tmux
       user
