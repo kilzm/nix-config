@@ -37,20 +37,19 @@
         data = with pkgs.vimPlugins; [
           lz-n
           mini-nvim
+          indent-o-matic
           nvim-lspconfig
           nvim-treesitter.withAllGrammars
           (nvim-treesitter.withPlugins (p: [p.tree-sitter-blueprint]))
+          nvim-treesitter-textobjects
 
           blink-cmp
           luasnip
           friendly-snippets
           lazydev-nvim
+          diffview-plus-nvim
 
-          vim-matchup
           vim-tmux-navigator
-
-          gitsigns-nvim
-          todo-comments-nvim
           which-key-nvim
 
           nightfox-nvim
@@ -65,19 +64,6 @@
           nvim-dap
           nvim-dap-ui
           nvim-dap-virtual-text
-
-          (pkgs.vimUtils.buildVimPlugin {
-            name = "sail-vim";
-            src =
-              pkgs.fetchFromGitHub {
-                owner = "rems-project";
-                repo = "sail";
-                rev = "0.20.2";
-                hash = "sha256-+ixT1tC5afb3BLFKfBUzmQ1UBXx1dyw8rn6+S0y6S1E=";
-                sparseCheckout = ["editors/vim"];
-              }
-              + "/editors/vim";
-          })
         ];
       };
 

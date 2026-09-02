@@ -11,10 +11,46 @@ return {
                 layout = {
                     preset = "default",
                 },
+                formatters = {
+                    file = {
+                        filename_first = true,
+                    },
+                },
+                win = {
+                    input = {
+                        keys = {
+                            ["<Esc>"] = { "close", mode = { "n", "i" } },
+                        },
+                    },
+                },
+                sources = {
+                    git_log = {
+                        actions = {
+                            diffview = function(picker)
+                                local item = picker:current()
+                                if not item or not item.commit then
+                                    return
+                                end
+                                picker:close()
+                                vim.cmd("DiffviewOpen " .. item.commit .. "~1.." .. item.commit)
+                            end,
+                        },
+                        win = {
+                            input = {
+                                keys = {
+                                    ["<C-l>"] = { "diffview", mode = { "n", "i" } },
+                                },
+                            },
+                        },
+                    },
+                },
             },
             indent = {
                 enabled = true,
                 scope = { enabled = true },
+            },
+            notifier = {
+                enabled = true,
             },
         })
     end,
@@ -27,13 +63,6 @@ return {
             desc = "Lazygit",
         },
         {
-            "<leader>gl",
-            function()
-                Snacks.lazygit.log()
-            end,
-            desc = "Lazygit Logs",
-        },
-        {
             "<leader>z",
             function()
                 Snacks.zen()
@@ -41,88 +70,88 @@ return {
             desc = "Toggle Zen Mode",
         },
         {
-            "<leader>ff",
+            "<leader>f",
             function()
                 Snacks.picker.files()
             end,
-            desc = "Find Files",
+            desc = "Search Files",
         },
         {
-            "<leader>fk",
+            "<leader>sk",
             function()
                 Snacks.picker.keymaps()
             end,
-            desc = "Find Keymaps",
+            desc = "Search Keymaps",
         },
         {
-            "<leader>fg",
+            "<leader>r",
             function()
                 Snacks.picker.grep()
             end,
-            desc = "Find by Grep",
+            desc = "Search by Grep",
         },
         {
-            "<leader>fw",
+            "<leader>sw",
             function()
                 Snacks.picker.grep_word()
             end,
-            desc = "Find current Word",
+            desc = "Search current Word",
         },
         {
-            "<leader>f<leader>",
+            "<leader>s<leader>",
             function()
                 Snacks.picker.buffers()
             end,
-            desc = "Find existing buffers",
+            desc = "Search existing buffers",
         },
         {
-            "<leader>fa",
+            "<leader>sa",
             function()
                 Snacks.picker.help()
             end,
-            desc = "Find Help",
+            desc = "Search Help",
         },
         {
-            "<leader>fd",
+            "<leader>sd",
             function()
                 Snacks.picker.diagnostics()
             end,
-            desc = "Find Diagnostics",
+            desc = "Search Diagnostics",
         },
         {
-            "<leader>fh",
+            "<leader>sh",
             function()
                 Snacks.picker.highlights()
             end,
-            desc = "Find Highlights",
+            desc = "Search Highlights",
         },
         {
-            "<leader>fc",
+            "<leader>sc",
             function()
                 Snacks.picker.colorschemes()
             end,
-            desc = "Find Colorschemes",
+            desc = "Search Colorschemes",
         },
         {
-            "<leader>fr",
+            "<leader>sr",
             function()
                 Snacks.picker.recent()
             end,
-            desc = "Find Recent Files",
+            desc = "Search Recent Files",
         },
         {
-            "<leader>f:",
+            "<leader>s:",
             function()
                 Snacks.picker.command_history()
             end,
-            desc = "Find in Command History",
+            desc = "Search in Command History",
         },
         {
-            "<leader>fm",
+            "<leader>sm",
             function()
                 Snacks.picker.marks()
             end,
-            desc = "Find Marks",
+            desc = "Search Marks",
         },
         {
             "gd",
@@ -174,14 +203,14 @@ return {
             desc = "Git Branches",
         },
         {
-            "<leader>gd",
+            "<leader>gD",
             function()
                 Snacks.picker.git_diff()
             end,
-            desc = "Git Diff",
+            desc = "Git Branches",
         },
         {
-            "<leader>gL",
+            "<leader>gl",
             function()
                 Snacks.picker.git_log()
             end,

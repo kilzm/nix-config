@@ -102,6 +102,21 @@
                   inlayHints = { hintPatternVariables = true, hintLetBindings = true },
               }
           })
+
+          vim.lsp.config['sail_lsp'] = {
+              cmd = { 'sail_lsp', '--stdio', '--highlight' },
+              filetypes = { 'sail' },
+              root_markers = { '.git' },
+              settings = {},
+          }
+
+          vim.lsp.enable('sail_lsp')
+
+          vim.filetype.add({
+              extension = {
+                  sail = "sail",
+              },
+          })
         '';
     };
   };

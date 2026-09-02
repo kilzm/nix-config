@@ -11,7 +11,7 @@ return {
         })
 
         require("which-key").add({
-            { "<leader>f", desc = "Find" },
+            { "<leader>s", desc = "Search" },
             { "<leader>g", group = "Git" },
             { "<leader>gh", group = "Hunk" },
             { "<leader>l", group = "Lsp" },

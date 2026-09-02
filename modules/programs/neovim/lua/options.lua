@@ -23,6 +23,7 @@ local options = {
     ignorecase = true,
     smartcase = true,
     inccommand = "split",
+    cursorline = false,
 
     splitright = true,
     splitbelow = true,
@@ -48,8 +49,7 @@ local options = {
     titlestring = "Neovim - %t",
     linespace = 1,
 
-    laststatus = 0,
-    statusline = " %t %=%l:%c ",
+    laststatus = 2,
 }
 
 vim.opt.clipboard:append("unnamedplus")
