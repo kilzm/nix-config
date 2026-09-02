@@ -1,8 +1,5 @@
 {
-  flake.nixosModules.fonts = {
-    pkgs,
-    ...
-  }: {
+  flake.nixosModules.fonts = {pkgs, ...}: {
     fonts.fontconfig = {
       enable = true;
       antialias = true;
