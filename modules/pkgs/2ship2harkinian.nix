@@ -7,7 +7,7 @@ let
     makeWrapper,
   }: let
     pname = "2s2h";
-    version = "5.0.0";
+    version = "5.0.1";
 
     description = "PC port of Majora's Mask with modern controls, widescreen, high-resolution, and more";
 
@@ -27,8 +27,8 @@ let
       inherit pname version;
 
       src = "${fetchzip {
-        url = "https://github.com/HarbourMasters/2ship2harkinian/releases/download/${version}/2Ship-Battler-Alfa-Linux.zip";
-        hash = "sha256-nFlZvVOCJvPRQOLSQl9O8YXQdoUEiIy1AwRhPCEZAO8=";
+        url = "https://github.com/HarbourMasters/2ship2harkinian/releases/download/${version}/2Ship-Battler-Bravo-Linux.zip";
+        hash = "sha256-oaMzrM2cRFCtyzARhVOUByjeSZnpdqnIT2vggW4HwAc=";
         stripRoot = false;
       }}/2ship.appimage";
 
