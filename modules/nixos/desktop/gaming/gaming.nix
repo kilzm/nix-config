@@ -26,11 +26,8 @@
       mangohud
       heroic
       protonplus
-      # lutris
-      # bottles
+      lutris
+      bottles
     ];
-
-    services.joycond.enable = true;
-    programs.joycond-cemuhook.enable = true;
   };
 }
