@@ -32,7 +32,6 @@
             mkEntry = expansion: {
               inherit expansion;
               cursor = true;
-              position = "command";
             };
           in {
             "n${n}${c}" = mkEntry "nix ${v} ${extra}%";
@@ -53,7 +52,6 @@
           |> lib.mapAttrs' (
             n: v:
               lib.nameValuePair "g${n}" {
-                position = "command";
                 cursor = true;
                 expansion = "git ${v}";
               }
@@ -65,6 +63,7 @@
           s = "status --short";
           l = "log --oneline";
           a = "add";
+          aa = "add --all";
           c = "commit";
           ca = "commit --amend";
           can = "commit --amend --no-edit";
@@ -94,32 +93,23 @@
       dotAbbreviations =
         lib.range 1 5
         |> map (n:
-          lib.nameValuePair
-          (lib.replicate (n + 1) "." |> lib.concatStrings)
-          (lib.replicate n ".." |> lib.concatStringsSep "/"))
+          lib.nameValuePair (lib.replicate (n + 1) "." |> lib.concatStrings) {
+            expansion = lib.replicate n ".." |> lib.concatStringsSep "/";
+            position = "anywhere";
+          })
         |> lib.listToAttrs;
 
       ltAbbreviations =
         lib.range 1 9
-        |> map (n:
-          lib.nameValuePair "lt${toString n}" {
-            expansion = "lt -L ${toString n}";
-            position = "command";
-          })
+        |> map (n: lib.nameValuePair "lt${toString n}" "lt -L ${toString n}")
         |> lib.listToAttrs;
-
-      mkCmd = cmds:
-        cmds
-        |> lib.mapAttrs (_: v: {
-          position = "command";
-          expansion = v;
-        });
     in
-      mkCmd {
+      {
         c = "clear";
         e = "yazi";
         cp = "cp -vi";
         mv = "mv -vi";
+        lg = "lazygit";
       }
       // ltAbbreviations
       // nixAbbreviations
