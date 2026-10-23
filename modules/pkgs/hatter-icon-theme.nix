@@ -7,13 +7,13 @@ let
   }:
     stdenvNoCC.mkDerivation {
       pname = "hatter-icon-theme";
-      version = "0-unstable-2026-07-15";
+      version = "0-unstable-2026-10-21";
 
       src = fetchFromGitHub {
         owner = "Mibea";
         repo = "Hatter";
-        rev = "c92b36cc439e2e82ae1ec864ed9c16d5ddd28bc6";
-        hash = "sha256-EQMsEjUxv9wyIWg6k/rc4FvhPBqq820Y/MgeG5KytVQ=";
+        rev = "877aa2ade75ce799f21a0a2dc014b4307e26f7a9";
+        hash = "sha256-7XPUI/ZfR6Kgg83kJWIPIqKlqTDkf3USzfABiD6RPoo=";
       };
 
       nativeBuildInputs = [gtk4];
