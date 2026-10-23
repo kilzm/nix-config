@@ -30,12 +30,12 @@
             "{85860b32-02a8-431a-b2b1-40fbd64c9c69}" = mkPluginUrl "github-file-icons";
             "github-no-more@ihatereality.space" = mkPluginUrl "github-no-more";
             "github-repository-size@pranavmangal" = mkPluginUrl "gh-repo-size";
+            "{458160b9-32eb-4f4c-87d1-89ad3bdeb9dc}" = mkPluginUrl "youtube-anti-translate";
             "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" = mkPluginUrl "return-youtube-dislikes";
             "firefox-extension@steamdb.info" = mkPluginUrl "steam-database";
             "{74145f27-f039-47ce-a470-a662b129930a}" = mkPluginUrl "clearurls";
             "@searchengineadremover" = mkPluginUrl "searchengineadremover";
             "jid1-BoFifL9Vbdl2zQ@jetpack" = mkPluginUrl "decentraleyes";
-            "trackmenot@mrl.nyu.edu" = mkPluginUrl "trackmenot";
             "zotero@chnm.gmu.edu" = "https://www.zotero.org/download/connector/dl?browser=firefox";
           };
       };
