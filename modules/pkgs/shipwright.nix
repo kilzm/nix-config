@@ -1,13 +1,12 @@
 let
   drv = {
     fetchurl,
-    fetchzip,
     appimageTools,
     makeDesktopItem,
     makeWrapper,
   }: let
     pname = "soh";
-    version = "9.2.3";
+    version = "9.3.1";
 
     description = "PC port of Ocarina of Time with modern controls, widescreen, high-resolution, and more";
 
@@ -26,11 +25,10 @@ let
     appimageTools.wrapType2 rec {
       inherit pname version;
 
-      src = "${fetchzip {
-        url = "https://github.com/HarbourMasters/Shipwright/releases/download/${version}/SoH-Ackbar-Delta-Linux.zip";
-        hash = "sha256-hlu5j8ZI+oml2xgnbQRh+a+lMC1hsZMyN4cExilIa7g=";
-        stripRoot = false;
-      }}/soh.appimage";
+      src = fetchurl {
+        url = "https://github.com/HarbourMasters/Shipwright/releases/download/${version}/SoH-Dewey-Bravo.appimage";
+        hash = "sha256-5Lt3XJoMNinrrFfktsy6bQtiHXGrIB6RBazu+RQa0fQ=";
+      };
 
       nativeBuildInputs = [makeWrapper];
 
