@@ -17,7 +17,7 @@ let
       desktopName = "2 Ship 2 Harkinian";
       comment = description;
       icon = fetchurl {
-        url = "https://raw.githubusercontent.com/HarbourMasters/2ship2harkinian/${version}/mm/macosx/2s2hIcon.png";
+        url = "https://raw.githubusercontent.com/2ship2harkinian/2ship2harkinian/${version}/mm/macosx/2s2hIcon.png";
         hash = "sha256-Mk2XvJgyT/YX+CZbASdZcNwmAOmWOTmGW/+lK0lGDwQ=";
       };
       categories = ["Game"];
@@ -27,7 +27,7 @@ let
       inherit pname version;
 
       src = "${fetchzip {
-        url = "https://github.com/HarbourMasters/2ship2harkinian/releases/download/${version}/2Ship-Battler-Bravo-Linux.zip";
+        url = "https://github.com/2ship2harkinian/2ship2harkinian/releases/download/${version}/2Ship-Battler-Bravo-Linux.zip";
         hash = "sha256-oaMzrM2cRFCtyzARhVOUByjeSZnpdqnIT2vggW4HwAc=";
         stripRoot = false;
       }}/2ship.appimage";
