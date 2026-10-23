@@ -58,6 +58,8 @@
           bind C-i command-prompt -p "Rename active session to: " "run-shell 'tms rename %1'"
           bind C-l "run-shell 'tms refresh'"
 
+          set -g theme terminal
+
           # border
           set -g pane-border-style fg=${c.dark}
           set -g pane-active-border-style fg=${c.base}
@@ -72,10 +74,14 @@
           set -g status-left "#[bold,fg=${c.light}]  #H #[nobold,fg=${c.base}]on #[bold,fg=${c.light}]  #S#[nobold]"
           set -g status-right "#[fg=${c.light}]%d-%m-%Y #[fg=${c.base}]at#[fg=${c.light}] %H:%M"
 
-
+          set -g window-status-current-style default
           set -g window-status-format " #[fg=${c.base},bold]#I#[nobold]: #W "
           set -g window-status-current-format \
             "#[fg=${c.dark}]#[bg=${c.dark},fg=${c.light},bold]#I#[nobold]: #W#[fg=${c.dark},bg=default]"
+
+          # popup
+          set -g popup-style default
+          set -g popup-border-style fg=${c.base}
         '';
     };
   };
