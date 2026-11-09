@@ -16,11 +16,12 @@
         theme = "Nordfox";
         background = "#${config.lib.stylix.colors.base00}";
         background-opacity = config.stylix.opacity.terminal;
+        background-blur = true;
         font-family = config.stylix.fonts.monospace.name;
         font-size = lib.mkDefault 13;
         window-padding-x = 12;
         window-padding-y = 6;
-        adjust-cell-height = "40%";
+        adjust-cell-height = "45%";
 
         command = "fish";
         shell-integration = "fish";
