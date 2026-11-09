@@ -7,7 +7,12 @@
     programs.nix-index.enableFishIntegration = false;
     programs.nix-index-database.comma.enable = true;
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        "firefox-esr-140-bin-unwrapped-140.17.0esr"
+      ];
+    };
     nix = {
       channel.enable = false;
       settings = {
