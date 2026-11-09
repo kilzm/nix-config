@@ -5,8 +5,11 @@
       papers
       nautilus
       showtime
-      resources
+      mission-center
+      paper-clip
+      impression
       gnome-font-viewer
+      gnome-text-editor
       gnome-usage
       gnome-music
       gnome-calculator
@@ -17,6 +20,7 @@
       gnome-maps
       gnome-clocks
       gnome-mahjongg
+      gnome-2048
     ];
   };
 }
