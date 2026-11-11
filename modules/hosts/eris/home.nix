@@ -22,6 +22,7 @@
                 mode = "2560x1440@165.00",
                 position = "1920x0",
                 scale = 1,
+                vrr = 1,
             })
 
             for i = 1, 10 do

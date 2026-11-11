@@ -15,7 +15,7 @@
       kernelParams = [
         "amd_pstate=active"
         "mt7921e.disable_aspm=Y"
-        "video=DP-4:2560x1400@165"
+        "video=DP-2:2560x1400@165"
       ];
       kernelModules = ["i2c-dev" "i2c-piix4"];
       supportedFilesystems.ntfs = true;
