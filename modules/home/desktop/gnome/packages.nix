@@ -8,13 +8,13 @@
       mission-center
       paper-clip
       impression
+      diebahn
+      blanket
       gnome-font-viewer
       gnome-text-editor
-      gnome-usage
       gnome-music
       gnome-calculator
       gnome-disk-utility
-      gnome-system-monitor
       gnome-calendar
       gnome-weather
       gnome-maps
