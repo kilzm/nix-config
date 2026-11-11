@@ -1,7 +1,8 @@
 local terminal = "ghostty"
+local terminal_tmux = terminal .. " -e sh -c 'tmux a || tmux'"
 local filemanager = "nautilus -w"
 local browser = "zen-beta"
-local discord = "discord"
+local discord = "equibop"
 
 hl.bind(mod .. " + R", hl.dsp.exec_cmd(shell .. " toggle launcher"))
 hl.bind(mod .. " + SHIFT + Return", hl.dsp.exec_cmd(shell .. " toggle launcher"))
@@ -9,7 +10,7 @@ hl.bind(mod .. " + Escape", hl.dsp.exec_cmd(shell .. " toggle powermenu"))
 hl.bind(mod .. " + Tab", hl.dsp.exec_cmd(shell .. " toggle quicksettings"))
 
 hl.bind(mod .. " + Q", hl.dsp.exec_cmd(terminal))
-hl.bind(mod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mod .. " + Return", hl.dsp.exec_cmd(terminal_tmux))
 hl.bind(mod .. " + E", hl.dsp.exec_cmd(filemanager))
 hl.bind(mod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mod .. " + D", hl.dsp.exec_cmd(discord))

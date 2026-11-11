@@ -1,5 +1,9 @@
 {
-  flake.homeModules.hyprland = {config, ...}: {
+  flake.homeModules.hyprland = {
+    config,
+    pkgs,
+    ...
+  }: {
     wayland.windowManager.hyprland = {
       enable = true;
       configType = "lua";
@@ -38,5 +42,10 @@
         "conf.startup" = {content = ./lua/startup.lua;};
       };
     };
+
+    home.packages = with pkgs; [
+      grimblast
+      hyprpicker
+    ];
   };
 }

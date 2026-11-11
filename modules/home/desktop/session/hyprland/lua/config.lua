@@ -38,6 +38,10 @@ hl.config({
             render_power = 1,
             color = "#00000033",
         },
+        motion_blur = {
+            enabled = true,
+            samples = 3,
+        },
         blur = {
             enabled = true,
             ignore_opacity = true,
@@ -51,15 +55,18 @@ hl.config({
     },
 
     cursor = {
-        no_hardware_cursors = true,
+        no_hardware_cursors = false,
     },
 
     render = {
         cm_auto_hdr = 0,
+        expand_undersized_textures = false,
     },
 
     misc = {
         disable_hyprland_logo = true,
         disable_splash_rendering = true,
+        animate_mouse_windowdragging = true,
+        animate_manual_resizes = true,
     },
 })
