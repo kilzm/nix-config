@@ -6,7 +6,7 @@ hl.gesture({
     fingers = 3,
     direction = "up",
     action = function()
-        hl.exec_cmd(shell .. " toggle launcher")
+        hl.exec_cmd(popup .. " launcher")
     end,
 })
 

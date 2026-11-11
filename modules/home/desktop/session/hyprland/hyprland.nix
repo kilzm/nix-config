@@ -17,7 +17,8 @@
         "conf.00-globals" = {
           content = ''
             mod = "SUPER"
-            shell = "fluctus-request"
+            shell = "fluctusctl"
+            popup = shell .. " popup toggle"
           '';
         };
 
@@ -37,7 +38,6 @@
         "conf.binds" = {content = ./lua/binds.lua;};
         "conf.animations" = {content = ./lua/animations.lua;};
         "conf.gestures" = {content = ./lua/gestures.lua;};
-        "conf.rules" = {content = ./lua/rules.lua;};
         "conf.scratchpads" = {content = ./lua/scratchpads.lua;};
         "conf.startup" = {content = ./lua/startup.lua;};
       };

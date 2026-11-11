@@ -29,11 +29,8 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    astal.url = "github:Aylur/astal";
-    astal.inputs.nixpkgs.follows = "nixpkgs";
-    ags.url = "github:Aylur/ags";
-    ags.inputs.nixpkgs.follows = "nixpkgs";
-    ags.inputs.astal.follows = "astal";
+    fluctus-shell.url = "git+ssh://git@github.com/kilzm/fluctus-shell";
+    fluctus-shell.inputs.nixpkgs.follows = "nixpkgs";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";

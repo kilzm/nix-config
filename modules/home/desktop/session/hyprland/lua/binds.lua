@@ -4,10 +4,10 @@ local filemanager = "nautilus -w"
 local browser = "zen-beta"
 local discord = "equibop"
 
-hl.bind(mod .. " + R", hl.dsp.exec_cmd(shell .. " toggle launcher"))
-hl.bind(mod .. " + SHIFT + Return", hl.dsp.exec_cmd(shell .. " toggle launcher"))
-hl.bind(mod .. " + Escape", hl.dsp.exec_cmd(shell .. " toggle powermenu"))
-hl.bind(mod .. " + Tab", hl.dsp.exec_cmd(shell .. " toggle quicksettings"))
+hl.bind(mod .. " + R", hl.dsp.exec_cmd(popup .. " launcher"))
+hl.bind(mod .. " + SHIFT + Return", hl.dsp.exec_cmd(popup .. " launcher"))
+hl.bind(mod .. " + Escape", hl.dsp.exec_cmd(popup .. " powermenu"))
+hl.bind(mod .. " + Tab", hl.dsp.exec_cmd(popup .. " quicksettings"))
 
 hl.bind(mod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd(terminal_tmux))

@@ -1,7 +1,7 @@
 {self, ...}: {
   flake.homeModules.session = {
     imports = with self.homeModules; [
-      ags
+      fluctus
       hyprland
       hypridle
       hyprlock

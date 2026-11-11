@@ -13,7 +13,7 @@ if runtime_dir then
 end
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("fluctus")
+    hl.exec_cmd("fluctus-shell")
     hl.exec_cmd(
         'wl-paste -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"'
     )
