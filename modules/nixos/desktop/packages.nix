@@ -9,6 +9,10 @@
     services.gvfs = {
       enable = true;
     };
+    services.gnome = {
+      tinysparql.enable = true;
+      localsearch.enable = true;
+    };
     programs.ausweisapp = {
       enable = true;
     };
