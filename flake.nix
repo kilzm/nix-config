@@ -41,6 +41,9 @@
 
     wlctl.url = "github:aashish-thapa/wlctl";
     wlctl.inputs.nixpkgs.follows = "nixpkgs";
+
+    msga.url = "github:punarinta/make-slack-great-again";
+    msga.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs:

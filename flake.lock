@@ -292,6 +292,26 @@
         "type": "github"
       }
     },
+    "msga": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794343476,
+        "narHash": "sha256-y+DD/kCxab0u2VUyeUU9DnhkpGUJAtv2hK6L3VJotVk=",
+        "owner": "punarinta",
+        "repo": "make-slack-great-again",
+        "rev": "c45f139491f255b288fe97b9f8c0b9f429f7bb84",
+        "type": "github"
+      },
+      "original": {
+        "owner": "punarinta",
+        "repo": "make-slack-great-again",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -507,6 +527,7 @@
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "msga": "msga",
         "nix-index-database": "nix-index-database",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",

@@ -1,5 +1,5 @@
 {
-  flake.homeModules.desktop = {pkgs, ...}: {
+  flake.homeModules.desktop = {inputs', pkgs, ...}: {
     home.packages = with pkgs; [
       libnotify
       libappindicator
@@ -9,7 +9,16 @@
       pwvucontrol
 
       qbittorrent-enhanced
-      proton-vpn
+      (proton-vpn.overrideAttrs (old: {
+        patches =
+          (old.patches or [])
+          ++ [
+            (fetchurl {
+              url = "https://github.com/ProtonVPN/proton-vpn-gtk-app/pull/152.patch";
+              hash = "sha256-rJiIhI/Owpo4tF1TFxA0Qh3aKpAjEeQaSzUSXz3zJrU=";
+            })
+          ];
+      }))
 
       zoom-us
       telegram-desktop
@@ -25,6 +34,8 @@
 
       gf
       imhex
+    ] ++ [
+      inputs'.msga.packages.default
     ];
 
     programs.thunderbird.enable = true;
