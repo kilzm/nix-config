@@ -5,7 +5,7 @@
     ...
   }: {
     home.packages = [
-      inputs.fluctus-shell.packages.${pkgs.stdenv.hostPlatform.system}.default
+      inputs.fluctus.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }

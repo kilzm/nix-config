@@ -3,7 +3,7 @@
     "astal": {
       "inputs": {
         "nixpkgs": [
-          "fluctus-shell",
+          "fluctus",
           "nixpkgs"
         ]
       },
@@ -178,25 +178,26 @@
         "type": "github"
       }
     },
-    "fluctus-shell": {
+    "fluctus": {
       "inputs": {
         "astal": "astal",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "valafmt": "valafmt"
       },
       "locked": {
-        "lastModified": 1794419198,
-        "narHash": "sha256-cZrJMtf7o8jfZ5QukCxTYZl/4fjQXxtCA3Ygnz/74RE=",
+        "lastModified": 1795039674,
+        "narHash": "sha256-POqMv1m+78ENEFPfgF/KEEKwImhetQSfo2TjU3jKMME=",
         "ref": "refs/heads/master",
-        "rev": "fc89bba5382c2adb07897eba9daf2fdd481d1781",
+        "rev": "352bac54fc8609fbb6b673d7d448fd4ab6bb2e19",
         "revCount": 1,
         "type": "git",
-        "url": "ssh://git@github.com/kilzm/fluctus-shell"
+        "url": "ssh://git@github.com/kilzm/fluctus"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/kilzm/fluctus-shell"
+        "url": "ssh://git@github.com/kilzm/fluctus"
       }
     },
     "fromYaml": {
@@ -522,7 +523,7 @@
       "inputs": {
         "cachyos-kernel": "cachyos-kernel",
         "flake-parts": "flake-parts_2",
-        "fluctus-shell": "fluctus-shell",
+        "fluctus": "fluctus",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
         "msga": "msga",
@@ -726,6 +727,27 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "valafmt": {
+      "inputs": {
+        "nixpkgs": [
+          "fluctus",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1794135791,
+        "narHash": "sha256-k9QIFJ1Em97sOVXfNn7Tx+lUdxWdaotkCVOLWAb7NEc=",
+        "owner": "aylur",
+        "repo": "valafmt",
+        "rev": "36903e1b730c44dd535393e5d80e12bf5ad9a60f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aylur",
+        "repo": "valafmt",
         "type": "github"
       }
     },

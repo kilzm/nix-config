@@ -29,8 +29,8 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    fluctus-shell.url = "git+ssh://git@github.com/kilzm/fluctus-shell";
-    fluctus-shell.inputs.nixpkgs.follows = "nixpkgs";
+    fluctus.url = "git+ssh://git@github.com/kilzm/fluctus";
+    fluctus.inputs.nixpkgs.follows = "nixpkgs";
 
     zen-browser.url = "github:0xc000022070/zen-browser-flake/beta";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
