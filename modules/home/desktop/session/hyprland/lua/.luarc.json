@@ -1,6 +1,6 @@
 {
   "diagnostics": {
-    "globals": ["hl", "mod", "shell"]
+    "globals": ["hl", "mod", "shell", "popup"]
   },
   "workspace": {
     "library": ["/run/current-system/sw/share/hypr/stubs"]

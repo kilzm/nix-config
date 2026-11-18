@@ -2,12 +2,12 @@ local terminal = "ghostty"
 local terminal_tmux = terminal .. " -e sh -c 'tmux a || tmux'"
 local filemanager = "nautilus -w"
 local browser = "zen-beta"
-local discord = "equibop"
+local discord = "discord"
 
-hl.bind(mod .. " + R", hl.dsp.exec_cmd(popup .. " launcher"))
-hl.bind(mod .. " + SHIFT + Return", hl.dsp.exec_cmd(popup .. " launcher"))
-hl.bind(mod .. " + Escape", hl.dsp.exec_cmd(popup .. " powermenu"))
-hl.bind(mod .. " + Tab", hl.dsp.exec_cmd(popup .. " quicksettings"))
+hl.bind(mod .. " + R", hl.dsp.exec_cmd(shell .. " popup launcher toggle"))
+hl.bind(mod .. " + SHIFT + Return", hl.dsp.exec_cmd(shell .. " popup launcher toggle"))
+hl.bind(mod .. " + Escape", hl.dsp.exec_cmd(shell .. " popup powermenu toggle"))
+hl.bind(mod .. " + Tab", hl.dsp.exec_cmd(shell .. " popup quicksettings toggle"))
 
 hl.bind(mod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mod .. " + Return", hl.dsp.exec_cmd(terminal_tmux))
@@ -39,10 +39,10 @@ hl.bind(mod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
 
-hl.bind(mod .. " + CTRL + H", hl.dsp.window.resize({ x = -80, y = 0, relative = true }))
-hl.bind(mod .. " + CTRL + L", hl.dsp.window.resize({ x = 80, y = 0, relative = true }))
-hl.bind(mod .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -80, relative = true }))
-hl.bind(mod .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 80, relative = true }))
+hl.bind(mod .. " + CTRL + H", hl.dsp.window.resize({ x = -80, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + CTRL + L", hl.dsp.window.resize({ x = 80, y = 0, relative = true }), { repeating = true })
+hl.bind(mod .. " + CTRL + K", hl.dsp.window.resize({ x = 0, y = -80, relative = true }), { repeating = true })
+hl.bind(mod .. " + CTRL + J", hl.dsp.window.resize({ x = 0, y = 80, relative = true }), { repeating = true })
 
 for i = 1, 9 do
     local ws = tostring(i)
@@ -65,12 +65,12 @@ hl.bind(mod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 hl.bind(
     "XF86AudioRaiseVolume",
-    hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%+"),
+    hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
     { repeating = true }
 )
 hl.bind(
     "XF86AudioLowerVolume",
-    hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 2%-"),
+    hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"),
     { repeating = true }
 )
 hl.bind(

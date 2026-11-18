@@ -3,7 +3,7 @@ hl.config({ animations = { enabled = true } })
 hl.curve("linear", { type = "bezier", points = { { 0, 0 }, { 1, 1 } } })
 hl.curve("ease", { type = "bezier", points = { { 0.4, 0 }, { 0.6, 1.05 } } })
 
-hl.curve("snappy", { type = "spring", mass = 1, stiffness = 260, damping = 25.5 })
+hl.curve("snappy", { type = "spring", mass = 1, stiffness = 260, damping = 25 })
 hl.curve("settle", { type = "spring", mass = 1, stiffness = 260, damping = 27 })
 
 hl.animation({

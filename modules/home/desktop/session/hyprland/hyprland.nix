@@ -18,7 +18,6 @@
           content = ''
             mod = "SUPER"
             shell = "fluctusctl"
-            popup = shell .. " popup toggle"
           '';
         };
 
