@@ -23,7 +23,7 @@
         base0F = "6b3030";
       };
       polarity = "dark";
-      opacity = lib.genAttrs ["terminal" "applications" "desktop" "popups"] (_: 0.85);
+      opacity = lib.genAttrs ["terminal" "applications" "desktop" "popups"] (_: 0.9);
       autoEnable = false;
     };
   };
