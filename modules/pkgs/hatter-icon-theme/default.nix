@@ -18,7 +18,6 @@ let
 
       nativeBuildInputs = [gtk4];
 
-      dontDropIconThemeCache = true;
       dontCheckForBrokenSymlinks = true;
 
       installPhase = ''
@@ -33,10 +32,7 @@ let
 
         ln -s ausweisapp.svg "$out/share/icons/Hatter/scalable/apps/AusweisApp.svg"
         ln -s ImHex.svg "$out/share/icons/Hatter/scalable/apps/imhex.svg"
-
-        for d in $out/share/icons/*/; do
-          gtk4-update-icon-cache -f -t "$d" || true
-        done
+        cp ${./extra-icons/msga.svg} "$out/share/icons/Hatter/scalable/apps/msga.svg"
 
         runHook postInstall
       '';
