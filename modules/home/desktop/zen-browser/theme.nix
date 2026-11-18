@@ -3,7 +3,7 @@
     programs.zen-browser.profiles.default = {
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        "browser.tabs.allow_transparent_browser" = true;
+        "browser.tabs.allow_transparent_browser" = false;
         "widget.transparent-windows" = true;
         "zen.widget.linux.transparency" = true;
         "zen.view.grey-out-inactive-windows" = false;
