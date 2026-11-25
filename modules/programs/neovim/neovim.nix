@@ -3,20 +3,12 @@
   self,
   ...
 }: {
-  flake.modules.neovim.default = {
-    config,
-    pkgs,
-    ...
-  }: {
+  flake.modules.neovim.default = {pkgs, ...}: {
     config = {
       settings = {
         config_directory = ./.;
         aliases = ["vi"];
       };
-
-      drv.postInstall = ''
-        sed -i 's/^Icon=.*/Icon=nvim/' ${placeholder config.outputName}/share/applications/nvim.desktop
-      '';
 
       runtimePkgs = [
         pkgs.wl-clipboard
