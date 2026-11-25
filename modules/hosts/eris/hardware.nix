@@ -7,7 +7,7 @@ _: {
   }: {
     imports = [(modulesPath + "/installer/scan/not-detected.nix")];
 
-    boot.initrd.availableKernelModules = ["xhci_pci" "nvme" "ahci" "usbhid" "sd_mod"];
+    boot.initrd.availableKernelModules = ["xhci_pci_prom21" "xhci_pci" "nvme" "ahci" "usbhid" "sd_mod"];
     boot.initrd.kernelModules = [];
     boot.kernelModules = ["kvm-amd"];
     boot.extraModulePackages = [];
@@ -30,6 +30,8 @@ _: {
     fileSystems."/mnt/wdb1tb" = {
       device = "/dev/disk/by-uuid/F85CFB735CFB2AD0";
       fsType = "ntfs";
+      noCheck = true;
+      options = ["nofail" "x-systemd.automount" "x-systemd.device-timeout=30s"];
     };
 
     swapDevices = [];
