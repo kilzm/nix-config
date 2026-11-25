@@ -54,8 +54,7 @@
 
     programs.nixcord = {
       enable = true;
-      discord.enable = false;
-      equibop.enable = true;
+      discord.equicord.enable = true;
 
       config = {
         frameless = true;
